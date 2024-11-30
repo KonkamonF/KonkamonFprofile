@@ -11,7 +11,6 @@ import G from "../assets/G.jpg";
 import G1 from "../assets/G1.jpg";
 import G2 from "../assets/G2.jpg";
 import H from "../assets/H.jpg";
-import H1 from "../assets/H1.jpg";
 import { AiFillGithub } from "react-icons/ai";
 
 export default function Experiences() {
@@ -293,13 +292,6 @@ export default function Experiences() {
             <img
               src={H}
               alt="Slide 3"
-              className="w-full h-full object-cover rounded-lg"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img
-              src={H1}
-              alt="Slide 4"
               className="w-full h-full object-cover rounded-lg"
             />
           </SwiperSlide>
