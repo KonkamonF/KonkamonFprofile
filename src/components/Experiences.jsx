@@ -62,11 +62,11 @@ export default function Experiences() {
       <div className="text-center mb-12">
         <p className="font-bold text-5xl ">Experiences</p>
       </div>
-      <div className="relative flex justify-between items-start">
+      <div className="relative flex justify-around items-start">
         <div className="w-1/3 text-center space-y-4">
           <div
             onClick={() => toggleFullscreen("Hotel")}
-            className={`bg-pink-200 p-6 rounded-lg shadow-lg ${
+            className={`bg-black p-6 rounded-lg shadow-lg ${
               fullscreenVideo === "Hotel" ? "fixed inset-0 z-50 bg-black" : ""
             }`}
           >
@@ -136,8 +136,8 @@ export default function Experiences() {
               modules={[Autoplay]}
               autoplay={{ delay: 1000 }}
               loop
-              slidesPerView={5}
-              spaceBetween={100}
+              slidesPerView={3}
+              spaceBetween={10}
             >
               {words.map((word, index) => (
                 <SwiperSlide key={index}>
@@ -165,7 +165,7 @@ export default function Experiences() {
         <div className="w-1/3 text-center space-y-4">
           <div
             onClick={() => toggleFullscreen("Selfproject")}
-            className={`bg-pink-200 p-6 rounded-lg shadow-lg h-full w-full ${
+            className={`bg-black p-6 rounded-lg shadow-lg h-full w-full ${
               fullscreenVideo === "Selfproject"
                 ? "fixed inset-0 z-50 bg-black"
                 : ""
@@ -237,8 +237,8 @@ export default function Experiences() {
               modules={[Autoplay]}
               autoplay={{ delay: 1000 }}
               loop
-              slidesPerView={5}
-              spaceBetween={100}
+              slidesPerView={3}
+              spaceBetween={10}
             >
               {word.map((word, index) => (
                 <SwiperSlide key={index}>
@@ -265,7 +265,7 @@ export default function Experiences() {
           autoplay={{ delay: 1500 }}
           pagination={{ clickable: true }}
           loop
-          className="bg-pink-200 p-6 rounded-lg shadow-lg"
+          className="p-6 rounded-lg shadow-lg"
           style={{ height: "500px" }}
         >
           <SwiperSlide>

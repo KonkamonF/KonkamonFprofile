@@ -34,7 +34,8 @@ export default function Profile() {
             className="w-[200px] h-[400px] object-cover rounded-lg hover:w-[400px]"
           />
         </div>
-        <p className="font-bold text-5xl ">Personal</p>
+        <p className="font-bold text-5xl mb-10">Personal</p>
+      <p className="font-semibold text-3xl">Miss Konakmon Fungsuk ( Ploy )</p>
       </div>
       <div className="text-center font-semibold text-3xl mb-4">
         Front-End Developer

@@ -4,6 +4,8 @@ import Header from "../components/Header";
 import Skills from "../components/Skills";
 import Experiences from "../components/Experiences";
 import Profile from "../components/Profile";
+import { HiMenu } from "react-icons/hi";
+import { IoClose } from "react-icons/io5";
 
 export default function Main() {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,7 +17,7 @@ export default function Main() {
   ];
 
   const cssNavigate =
-    "cursor-pointer text-xl px-8 py-2 transition-colors hover:bg-[#FEFFA7] rounded-full bg-[#fbcfe8] duration-100 text-[#CC4B41]";
+    "cursor-pointer text-center text-[#603F26] text-lg p-2 px-8  transition-colors hover:bg-[#FEFFA7] rounded-lg bg-[#D1BB9E] duration-100 ";
 
   const handleScroll = (id) => {
     document.getElementById(id)?.scrollIntoView({
@@ -24,11 +26,11 @@ export default function Main() {
   };
 
   return (
-    <div className="text-[#CC4B41]">
+    <div className="text-[#795353]">
       <div className="absolute mx-auto top-0 z-50 right-0 left-0 flex items-end flex-col">
-        <div className="fixed flex items-center rounded-xl p-2 justify-between">
+        <div className="fixed flex items-start rounded-xl p-2  justify-around">
           {isOpen && (
-            <div className="flex space-x-4 bg-[#fbcfe8] rounded-full shadow-lg">
+            <div className="flex bg-[#D1BB9E] rounded-l-xl shadow-lg mt-4">
               {tabs.map((tab) => (
                 <p
                   key={tab.id}
@@ -42,9 +44,9 @@ export default function Main() {
           )}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="cursor-pointer text-xl px-8 py-2 transition-colors hover:bg-[#FEFFA7] shadow-lg rounded-full bg-[#fbcfe8] duration-100 text-[#CC4B41]"
+            className="mt-4 mr-4 cursor-pointer text-xl px-10 p-2 transition-colors hover:bg-[#FEFFA7] rounded-r-xl bg-[#D1BB9E] duration-100 text-[#795353]"
           >
-            {isOpen ? "X" : "More"}
+            {isOpen ? <IoClose size={28} /> : <HiMenu size={25} />}
           </button>
         </div>
       </div>
