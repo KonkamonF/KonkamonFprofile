@@ -28,7 +28,7 @@ export default function Main() {
   return (
     <div className="text-[#795353]">
       <div className="absolute mx-auto top-0 z-50 right-0 left-0 flex items-end flex-col">
-        <div className="fixed flex items-start rounded-xl p-2  justify-around">
+        <div className="fixed flex rounded-xl p-2 ">
           {isOpen && (
             <div className="flex bg-[#D1BB9E] rounded-l-xl shadow-lg mt-4">
               {tabs.map((tab) => (
@@ -44,7 +44,7 @@ export default function Main() {
           )}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="mt-4 mr-4 cursor-pointer text-xl px-10 p-2 transition-colors hover:bg-[#FEFFA7] rounded-r-xl bg-[#D1BB9E] duration-100 text-[#795353]"
+            className="mt-4 mr-4 cursor-pointer text-xl w-full p-2 transition-colors hover:bg-[#FEFFA7] rounded-r-xl bg-[#D1BB9E] duration-100 text-[#795353]"
           >
             {isOpen ? <IoClose size={28} /> : <HiMenu size={25} />}
           </button>

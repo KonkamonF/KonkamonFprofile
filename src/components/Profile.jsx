@@ -35,7 +35,7 @@ export default function Profile() {
           />
         </div>
         <p className="font-bold text-5xl mb-10">Personal</p>
-      <p className="font-semibold text-3xl">Miss Konakmon Fungsuk ( Ploy )</p>
+        <p className="font-semibold text-3xl animate-bounce">Miss Konakmon Fungsuk ( Ploy )</p>
       </div>
       <div className="text-center font-semibold text-3xl mb-4">
         Front-End Developer
