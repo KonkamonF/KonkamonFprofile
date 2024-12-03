@@ -30,7 +30,7 @@ export default function Main() {
       <div className="absolute mx-auto top-0 z-50 right-0 left-0 w-full flex items-center flex-col">
         <div className="fixed flex rounded-xl p-2 ">
           {isOpen && (
-            <div className="flex bg-[#D1BB9E] rounded-xl w-full justify-center items-center shadow-lg mt-4">
+            <div className="flex bg-[#D1BB9E] rounded-xl w-full justify-center items-center shadow-lg">
               {tabs.map((tab) => (
                 <p
                   key={tab.id}
@@ -44,17 +44,17 @@ export default function Main() {
           )}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="mt-4 mr-4 cursor-pointer text-xl w-full justify-center items-center flex mx-auto p-2 transition-colors hover:bg-[#FEFFA7] rounded-xl bg-[#D1BB9E] duration-100 text-[#795353]"
+            className=" mr-4 cursor-pointer text-xl w-full justify-center items-center flex mx-auto p-2 transition-colors hover:bg-[#FEFFA7] rounded-xl bg-[#D1BB9E] duration-100 text-[#795353]"
           >
             {isOpen ? <IoClose size={28} /> : "More"}
           </button>
         </div>
       </div>
 
-      <div className="py-24" id="profile-section">
+      <div className="" id="profile-section">
         <Profile />
       </div>
-      <div className="pb-[350px]" id="skills-section">
+      <div className="pb-[100px]" id="skills-section">
         <Skills />
       </div>
       <div className="pb-[50px]" id="experiences-section">

@@ -26,7 +26,7 @@ export default function Profile() {
 
   return (
     <>
-      <div className="text-center mb-10">
+      <div className="text-center">
         <div className="flex gap-1 w-full justify-center pb-8">
           <img
             src={a}

@@ -58,7 +58,7 @@ export default function Experiences() {
   ];
   return (
     <div className="p-8">
-      <div className="text-center mb-12">
+      <div className="text-center mb-12 mt-8">
         <p className="font-bold text-5xl ">Experiences</p>
       </div>
       <div className="relative flex justify-around items-start">

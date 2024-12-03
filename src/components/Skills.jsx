@@ -36,51 +36,54 @@ export default function Skills() {
 
   return (
     <>
-      <div
-        className="relative top-[200px]"
-        style={{
-          width: `${radius * 2}px`,
-          height: `${radius * 2}px`,
-          margin: "auto",
-        }}
-      >
-        <div className="absolute top-[-150px] left-[190px] w-full h-full font-bold text-5xl">
-          Skills
-        </div>
-        <img
-          src={Arrow}
-          alt="Circle Background"
-          className="absolute top-0 left-0 w-full h-full animate-spin-slow"
-        />
-        {skills.map((skill, index) => {
-          const angle = (index / totalSkills) * 2 * Math.PI;
-          const x = center.x + radius * Math.cos(angle) - 50;
-          const y = center.y + radius * Math.sin(angle) - 50;
+      <div className="">
+      <div className="text-center font-bold text-5xl mx-auto py-14">
+            Skills
+          </div>
+        <div
+          className="relative top-[50px] mx-auto"
+          style={{
+            width: `${radius * 2}px`,
+            height: `${radius * 2}px`,
+            margin: "auto",
+          }}
+        >
+       
+          <img
+            src={Arrow}
+            alt="Circle Background"
+            className="absolute top-0 left-0 w-full h-full animate-spin-slow"
+          />
+          {skills.map((skill, index) => {
+            const angle = (index / totalSkills) * 2 * Math.PI;
+            const x = center.x + radius * Math.cos(angle) - 50;
+            const y = center.y + radius * Math.sin(angle) - 50;
 
-          return (
-            <div
-              key={index}
-              className="absolute"
-              style={{
-                top: `${y}px`,
-                left: `${x}px`,
-                width: "100px",
-                height: "100px",
-              }}
-            >
-              <div className="relative z-10 flex flex-col items-center justify-center p-1 hover:bg-[#ffd6e3] rounded-lg  hover:w-[90px] hover:border-b-4 hover:border-[#F35588]">
-                <img
-                  src={skill.src}
-                  alt={skill.label}
-                  className="w-[70px] h-[70px]"
-                />
-                <span className="text-center mt-2 font-semibold">
-                  {skill.label}
-                </span>
+            return (
+              <div
+                key={index}
+                className="absolute"
+                style={{
+                  top: `${y}px`,
+                  left: `${x}px`,
+                  width: "100px",
+                  height: "100px",
+                }}
+              >
+                <div className="relative z-10 flex flex-col items-center justify-center p-1 hover:bg-[#ffd6e3] rounded-lg  hover:w-[90px] hover:border-b-4 hover:border-[#F35588]">
+                  <img
+                    src={skill.src}
+                    alt={skill.label}
+                    className="w-[70px] h-[70px]"
+                  />
+                  <span className="text-center mt-2 font-semibold">
+                    {skill.label}
+                  </span>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </>
   );
