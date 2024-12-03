@@ -66,7 +66,7 @@ export default function Profile() {
         </a>
       </div>
       <div className="flex justify-center text-center mb-8">
-        <div className="leading-relaxed">
+        <div className="leading-relaxed w-[70%]">
           I am a passionate and detail-oriented Front-End Developer with a
           strong foundation in modern web technologies such as HTML, CSS,
           JavaScript, and frameworks like React js. I am dedicated to delivering

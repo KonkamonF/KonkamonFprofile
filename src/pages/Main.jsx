@@ -51,7 +51,7 @@ export default function Main() {
         </div>
       </div>
 
-      <div className="" id="profile-section">
+      <div className="pt-[80px]" id="profile-section">
         <Profile />
       </div>
       <div className="pb-[100px]" id="skills-section">
