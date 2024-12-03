@@ -17,7 +17,7 @@ export default function Main() {
   ];
 
   const cssNavigate =
-    "cursor-pointer text-center text-[#603F26] text-lg p-2 px-8  transition-colors hover:bg-[#FEFFA7] rounded-lg bg-[#D1BB9E] duration-100 ";
+    "cursor-pointer text-center text-[#603F26] text-lg p-2 px-8 w-full transition-colors hover:bg-[#FEFFA7] rounded-lg bg-[#D1BB9E] duration-100 ";
 
   const handleScroll = (id) => {
     document.getElementById(id)?.scrollIntoView({
@@ -27,10 +27,10 @@ export default function Main() {
 
   return (
     <div className="text-[#795353]">
-      <div className="absolute mx-auto top-0 z-50 right-0 left-0 flex items-end flex-col">
+      <div className="absolute mx-auto top-0 z-50 right-0 left-0 w-full flex items-center flex-col">
         <div className="fixed flex rounded-xl p-2 ">
           {isOpen && (
-            <div className="flex bg-[#D1BB9E] rounded-l-xl shadow-lg mt-4">
+            <div className="flex bg-[#D1BB9E] rounded-xl w-full justify-center items-center shadow-lg mt-4">
               {tabs.map((tab) => (
                 <p
                   key={tab.id}
@@ -44,9 +44,9 @@ export default function Main() {
           )}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="mt-4 mr-4 cursor-pointer text-xl w-full p-2 transition-colors hover:bg-[#FEFFA7] rounded-r-xl bg-[#D1BB9E] duration-100 text-[#795353]"
+            className="mt-4 mr-4 cursor-pointer text-xl w-full justify-center items-center flex mx-auto p-2 transition-colors hover:bg-[#FEFFA7] rounded-xl bg-[#D1BB9E] duration-100 text-[#795353]"
           >
-            {isOpen ? <IoClose size={28} /> : <HiMenu size={25} />}
+            {isOpen ? <IoClose size={28} /> : "More"}
           </button>
         </div>
       </div>

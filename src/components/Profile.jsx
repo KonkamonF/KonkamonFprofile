@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { AiFillGithub } from "react-icons/ai";
 import University from "../assets/University.png";
 import code from "../assets/code.png";
@@ -8,10 +8,21 @@ import a3 from "../assets/A3.jpg";
 import a from "../assets/a.jpg";
 
 export default function Profile() {
-  const sectionVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0 },
+  const [show, setShow] = useState(false);
+
+  const handleScroll = () => {
+    const scrollY = window.scrollY;
+    if (scrollY > 200) {
+      setShow(true);
+    } else {
+      setShow(false);
+    }
   };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
@@ -35,7 +46,9 @@ export default function Profile() {
           />
         </div>
         <p className="font-bold text-5xl mb-10">Personal</p>
-        <p className="font-semibold text-3xl animate-bounce">Miss Konakmon Fungsuk ( Ploy )</p>
+        <p className="font-semibold text-3xl animate-bounce">
+          Miss Konakmon Fungsuk ( Ploy )
+        </p>
       </div>
       <div className="text-center font-semibold text-3xl mb-4">
         Front-End Developer
@@ -52,8 +65,8 @@ export default function Profile() {
           <AiFillGithub className="text-4xl" />
         </a>
       </div>
-      <div className="  flex justify-center mb-8">
-        <div className="w-[900px] leading-relaxed">
+      <div className="flex justify-center text-center mb-8">
+        <div className="leading-relaxed">
           I am a passionate and detail-oriented Front-End Developer with a
           strong foundation in modern web technologies such as HTML, CSS,
           JavaScript, and frameworks like React js. I am dedicated to delivering
@@ -73,22 +86,18 @@ export default function Profile() {
         </div>
       </div>
       <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 0.6 }}
-        variants={sectionVariants}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: show ? 1 : 0 }}
+        transition={{ duration: 0.9 }}
       >
         <div className="text-center font-semibold text-3xl mb-4">
           Education{" "}
         </div>
         <div className="flex items-center justify-center gap-36">
           <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.6 }}
-            variants={sectionVariants}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: show ? 1 : 0 }}
+            transition={{ duration: 0.9 }}
           >
             <div>
               <img
@@ -103,11 +112,9 @@ export default function Profile() {
           </motion.div>
 
           <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.6 }}
-            variants={sectionVariants}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: show ? 1 : 0 }}
+            transition={{ duration: 0.9 }}
           >
             <div>
               <img

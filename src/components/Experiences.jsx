@@ -76,7 +76,7 @@ export default function Experiences() {
               className={`cursor-pointer ${
                 fullscreenVideo === "Hotel"
                   ? "w-full h-full object-contain"
-                  : "w-full h-full object-cover"
+                  : "w-full h-[300px] object-cover"
               }`}
             >
               <source src={Hotel} type="video/mp4" />
@@ -101,7 +101,7 @@ export default function Experiences() {
               rel="noopener noreferrer"
               className="shadow-md flex items-center space-x-2 text-blue-500 hover:underline border-2 rounded-xl p-1 px-2 border-[#3b82f6]"
             >
-              <span>Hotel Book Group Project</span>
+              <span>Visit Website</span>
               <FaCirclePlay className="text-lg" />
             </a>
           </div>
@@ -177,7 +177,7 @@ export default function Experiences() {
               className={`cursor-pointer ${
                 fullscreenVideo === "Selfproject"
                   ? "w-full h-full object-contain"
-                  : "w-full h-[260px] object-cover"
+                  : "w-full h-[300px] object-cover"
               }`}
             >
               <source src={Selfproject} type="video/mp4" />
@@ -202,7 +202,7 @@ export default function Experiences() {
               rel="noopener noreferrer"
               className="shadow-md flex items-center space-x-2 text-blue-500 hover:underline border-2 rounded-xl p-1 px-2 border-[#3b82f6]"
             >
-              <span>Shutter Roller Self-Project</span>
+              <span>Visit Website</span>
               <FaCirclePlay className="text-lg" />
             </a>
           </div>
