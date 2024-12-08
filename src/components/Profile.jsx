@@ -25,12 +25,14 @@ export default function Profile() {
 
   return (
     <>
+
+
       <div className="text-center">
         <div className="flex gap-1 w-full justify-center pb-8">
           <img
             src={a}
             alt="Slide"
-            className="w-[200px] h-[400px] object-cover rounded-lg hover:w-[400px]"
+            className="w-[200px] h-[400px] object-cover rounded-lg hover:w-[400px] hidden sm:block"
           />
           <img
             src={a1}
@@ -41,12 +43,12 @@ export default function Profile() {
           <img
             src={a3}
             alt="Slide 3"
-            className="w-[200px] h-[400px] object-cover rounded-lg hover:w-[400px]"
+            className="w-[200px] h-[400px] object-cover rounded-lg hover:w-[400px] hidden sm:block"
           />
         </div>
         <p className="font-bold text-5xl mb-10">Personal</p>
         <p className="font-semibold text-3xl animate-bounce">
-          Miss Konakmon Fungsuk ( Ploy )
+          Miss Konakmon Fungsuk  <p className="font-semibold text-3xl animate-bounce">( Ploy )</p>
         </p>
       </div>
       <div className="text-center font-semibold text-3xl mb-4">

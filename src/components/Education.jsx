@@ -30,7 +30,7 @@ export default function Education() {
         <div className="text-center font-semibold text-3xl mb-4">
           Education{" "}
         </div>
-        <div className="flex items-center justify-center gap-36">
+        <div className="flex items-center justify-center gap-8 sm:gap-36 flex-col sm:flex-row">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: show ? 1 : 0 }}

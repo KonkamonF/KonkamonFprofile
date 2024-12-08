@@ -51,18 +51,18 @@ export default function Skills() {
   }, []);
 
   return (
-    <>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: show ? 1 : 0 }}
-        transition={{ duration: 0.9 }}
-      >
-        <div className="">
-          <div className="text-center font-bold text-5xl mx-auto py-14">
-            Skills
-          </div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: show ? 1 : 0 }}
+      transition={{ duration: 0.9 }}
+    >
+      <div>
+        <div className="text-center font-bold text-5xl mx-auto py-14">
+          Skills
+        </div>
+        <div className="relative top-[50px] mx-auto">
           <div
-            className="relative top-[50px] mx-auto"
+            className="hidden md:block relative mx-auto"
             style={{
               width: `${radius * 2}px`,
               height: `${radius * 2}px`,
@@ -90,7 +90,7 @@ export default function Skills() {
                     height: "100px",
                   }}
                 >
-                  <div className="relative z-10 flex flex-col items-center justify-center p-1 hover:bg-[#ffd6e3] rounded-lg  hover:w-[90px] hover:border-b-4 hover:border-[#F35588]">
+                  <div className="relative z-10 flex flex-col items-center justify-center p-1 hover:bg-[#ffd6e3] rounded-lg hover:w-[90px] hover:border-b-4 hover:border-[#F35588]">
                     <img
                       src={skill.src}
                       alt={skill.label}
@@ -104,8 +104,27 @@ export default function Skills() {
               );
             })}
           </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 md:hidden">
+            {skills.map((skill, index) => (
+              <div
+                key={index}
+                className="relative z-10 flex flex-col items-center justify-center p-1 hover:bg-[#ffd6e3] rounded-lg
+                 hover:border-b-4 hover:border-[#F35588]"
+              >
+                <img
+                  src={skill.src}
+                  alt={skill.label}
+                  className="w-[70px] h-[70px]"
+                />
+                <span className="text-center mt-2 font-semibold">
+                  {skill.label}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
-      </motion.div>
-    </>
+      </div>
+    </motion.div>
   );
 }

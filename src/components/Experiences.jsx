@@ -180,12 +180,6 @@ export default function Experiences() {
               </p>
             </div>
 
-            <div className="relative w-1/12 flex flex-col items-center">
-              <div className="w-8 h-8 rounded-full bg-red-600"></div>
-              <div className="w-1 h-[550px] bg-red-600"></div>
-              <div className="w-8 h-8 rounded-full bg-red-600"></div>
-            </div>
-
             <div className="w-1/3 text-center space-y-4">
               <div
                 onClick={() => toggleFullscreen("Selfproject")}
