@@ -130,7 +130,7 @@ export default function Experiences() {
                   <FaCirclePlay className="text-lg" />
                 </a>
               </div>
-              <div className="flex justify-center gap-4">
+              <div className="flex justify-center gap-4 sm:gap-36 flex-col sm:flex-row">
                 <div className="flex">
                   <a
                     href="https://github.com/NuttavichBig/CC18-GroupProject-Client.git"
@@ -160,8 +160,7 @@ export default function Experiences() {
                   modules={[Autoplay]}
                   autoplay={{ delay: 1000 }}
                   loop
-                  slidesPerView={3}
-                  spaceBetween={10}
+                  slidesPerView={1}
                 >
                   {words.map((word, index) => (
                     <SwiperSlide key={index}>
@@ -225,7 +224,7 @@ export default function Experiences() {
                   <FaCirclePlay className="text-lg" />
                 </a>
               </div>
-              <div className="flex justify-center gap-4">
+              <div className="flex justify-center gap-4 sm:gap-36 flex-col sm:flex-row">
                 <div className="flex">
                   <a
                     href="https://github.com/KonkamonF/ShutterRollerFront.git"
@@ -249,14 +248,13 @@ export default function Experiences() {
                   </a>
                 </div>
               </div>
-              <div className="flex gap-8">
+              <div className="flex gap-8 justify-center items-center">
                 <p className="text-lg">Library</p>
                 <Swiper
                   modules={[Autoplay]}
                   autoplay={{ delay: 1000 }}
                   loop
-                  slidesPerView={3}
-                  spaceBetween={10}
+                  slidesPerView={1}
                 >
                   {word.map((word, index) => (
                     <SwiperSlide key={index}>
