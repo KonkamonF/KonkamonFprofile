@@ -130,7 +130,7 @@ export default function Experiences() {
                   <FaCirclePlay className="text-lg" />
                 </a>
               </div>
-              <div className="flex justify-center gap-4 sm:gap-36 flex-col sm:flex-row">
+              <div className="flex justify-center gap-4 sm:gap-8 flex-col sm:flex-row">
                 <div className="flex">
                   <a
                     href="https://github.com/NuttavichBig/CC18-GroupProject-Client.git"
@@ -225,7 +225,7 @@ export default function Experiences() {
                   <FaCirclePlay className="text-lg" />
                 </a>
               </div>
-              <div className="flex justify-center gap-4 sm:gap-36 flex-col sm:flex-row">
+              <div className="flex justify-center gap-4 sm:gap-8 flex-col sm:flex-row">
                 <div className="flex">
                   <a
                     href="https://github.com/KonkamonF/ShutterRollerFront.git"
