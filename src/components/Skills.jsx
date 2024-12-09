@@ -57,7 +57,7 @@ export default function Skills() {
       transition={{ duration: 0.9 }}
     >
       <div>
-        <div className="text-center font-bold text-5xl mx-auto py-14">
+        <div className="text-center font-bold text-5xl mx-auto py-8">
           Skills
         </div>
         <div className="relative top-[50px] mx-auto">

@@ -81,7 +81,7 @@ export default function Experiences() {
         transition={{ duration: 0.9 }}
       >
         <div className="p-8">
-          <div className="text-center mb-12 mt-8">
+          <div className="text-center mb-12 mt-2">
             <p className="font-bold text-5xl ">Experiences</p>
           </div>
           <div className="relative flex justify-around items-start">
@@ -164,7 +164,7 @@ export default function Experiences() {
                 >
                   {words.map((word, index) => (
                     <SwiperSlide key={index}>
-                      <span className="font-semibold text-lg text-center flex items-center cursor-move sm:justify-center sm:items-center">
+                      <span className="font-semibold text-lg text-center flex items-center cursor-move">
                         {word}
                       </span>
                     </SwiperSlide>
