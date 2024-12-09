@@ -154,7 +154,7 @@ export default function Experiences() {
                   </a>
                 </div>
               </div>
-              <div className="flex gap-8">
+              <div className="flex gap-8 sm:gap-8 flex-col sm:flex-row">
                 <p className="text-lg">Library</p>
                 <Swiper
                   modules={[Autoplay]}
@@ -164,13 +164,14 @@ export default function Experiences() {
                 >
                   {words.map((word, index) => (
                     <SwiperSlide key={index}>
-                      <span className="font-semibold text-lg text-center flex items-center cursor-move">
+                      <span className="font-semibold text-lg text-center flex items-center cursor-move sm:justify-center sm:items-center">
                         {word}
                       </span>
                     </SwiperSlide>
                   ))}
                 </Swiper>
               </div>
+
               <p className="text-start leading-relaxed">
                 The “Hotel Book” project is focused on creating a user-friendly
                 web application for booking hotels. Users can search for options
@@ -248,7 +249,7 @@ export default function Experiences() {
                   </a>
                 </div>
               </div>
-              <div className="flex gap-8 justify-center items-center">
+              <div className="flex gap-8 sm:gap-8 flex-col sm:flex-row">
                 <p className="text-lg">Library</p>
                 <Swiper
                   modules={[Autoplay]}
