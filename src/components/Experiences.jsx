@@ -26,7 +26,8 @@ export default function Experiences() {
   const handleScroll = () => {
     // ปรับค่า scrollY ให้สัมพันธ์กับขนาดจอ เพื่อให้แสดงผลลัพธ์บนมือถือ
     const scrollY = window.scrollY;
-    if (scrollY > 500) { // ปรับค่าจาก 1500 ให้ต่ำลงเพื่อการแสดงผลบนมือถือที่ง่ายขึ้น
+    if (scrollY > 500) {
+      // ปรับค่าจาก 1500 ให้ต่ำลงเพื่อการแสดงผลบนมือถือที่ง่ายขึ้น
       setShow(true);
     } else {
       setShow(false);
@@ -87,7 +88,7 @@ export default function Experiences() {
             {/* ปรับขนาดตัวอักษรสำหรับ responsive */}
             <p className="font-bold text-4xl sm:text-5xl">Experiences</p>
           </div>
-          
+
           {/* ส่วนหลัก: Group Project & Self-Project */}
           {/*
             ปรับ Responsive:
@@ -98,7 +99,6 @@ export default function Experiences() {
             - gap-8: เพิ่มระยะห่างระหว่างโปรเจกต์บนมือถือ
           */}
           <div className="relative flex justify-center items-start flex-col md:flex-row gap-12 md:gap-4">
-            
             {/* Project 1: Group Project */}
             {/*
               ปรับ Responsive:
@@ -140,7 +140,7 @@ export default function Experiences() {
                 )}
               </div>
               <p className="font-bold text-2xl sm:text-3xl">Group Project</p>
-              
+
               {/* ปุ่ม Visit Website */}
               <div className="flex justify-center">
                 <a
@@ -153,10 +153,10 @@ export default function Experiences() {
                   <FaCirclePlay className="text-xl" />
                 </a>
               </div>
-              
+
               {/* ปุ่ม GitHub */}
               {/* จัดวางแนวนอนบนมือถือ แต่ถ้าแคบเกินไปจะยังคงเป็นคอลัมน์อยู่ */}
-              <div className="flex justify-center gap-4 flex-wrap"> 
+              <div className="flex justify-center gap-4 flex-wrap">
                 <a
                   href="https://github.com/NuttavichBig/CC18-GroupProject-Client.git"
                   target="_blank"
@@ -176,7 +176,7 @@ export default function Experiences() {
                   <AiFillGithub className="text-2xl" />
                 </a>
               </div>
-              
+
               {/* Swiper (Library) */}
               <div className="flex flex-col items-center gap-2">
                 <p className="text-lg font-bold">Libraries Used</p>
@@ -242,7 +242,7 @@ export default function Experiences() {
                 )}
               </div>
               <p className="font-bold text-2xl sm:text-3xl">Self-Project</p>
-              
+
               {/* ปุ่ม Visit Website */}
               <div className="flex justify-center">
                 <a
@@ -255,7 +255,7 @@ export default function Experiences() {
                   <FaCirclePlay className="text-xl" />
                 </a>
               </div>
-              
+
               {/* ปุ่ม GitHub */}
               <div className="flex justify-center gap-4 flex-wrap">
                 <a
@@ -277,7 +277,7 @@ export default function Experiences() {
                   <AiFillGithub className="text-2xl" />
                 </a>
               </div>
-              
+
               {/* Swiper (Library) */}
               <div className="flex flex-col items-center gap-2">
                 <p className="text-lg font-bold">Libraries Used</p>
@@ -297,7 +297,7 @@ export default function Experiences() {
                   ))}
                 </Swiper>
               </div>
-              
+
               <p className="text-start leading-relaxed text-sm sm:text-base px-2">
                 The website will feature product listings, user accounts, users
                 can be asking questions, payment deposits processing, order
@@ -307,17 +307,20 @@ export default function Experiences() {
               </p>
             </div>
           </div>
-          
+
           {/* ส่วนเสริม: Personal Experience และ Swiper รูปภาพ */}
           <div className="mt-12 sm:mt-16 text-center max-w-4xl mx-auto space-y-4">
             <Swiper
               modules={[Navigation, Pagination, Autoplay]}
               navigation
-              autoplay={{ delay: 1500, disableOnInteraction: false }}
+              autoplay={{
+                delay: 2000,
+                disableOnInteraction: false,
+              }}
               pagination={{ clickable: true }}
               loop
-              className="p-4 sm:p-6 rounded-lg shadow-lg"
-              style={{ height: "300px", maxWidth: "100%" }} // ปรับความสูงให้เหมาะสมกับ responsive
+              className="p-4 sm:p-6 rounded-lg shadow-lg bg-black"
+              style={{ height: "400px", maxWidth: "100%" }} // ปรับความสูงให้เหมาะสมกับ responsive
             >
               <SwiperSlide>
                 <img
@@ -349,7 +352,9 @@ export default function Experiences() {
               </SwiperSlide>
             </Swiper>
 
-            <p className="font-bold text-xl sm:text-2xl pt-4">Personal Experience</p>
+            <p className="font-bold text-xl sm:text-2xl pt-4">
+              Personal Experience
+            </p>
             <p className="leading-relaxed text-sm sm:text-base px-2">
               After six years of experience in customer service, I am eager to
               transition into the field of software development. My time in
@@ -357,8 +362,8 @@ export default function Experiences() {
               communication, and collaboration skills**. I am dedicated to
               applying software development skills in a new environment that
               fosters innovation and continuous learning. My goal is to grow as
-              a developer while delivering applications that are both **functional
-              and visually appealing**.
+              a developer while delivering applications that are both
+              **functional and visually appealing**.
             </p>
           </div>
         </div>
