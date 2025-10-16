@@ -24,8 +24,9 @@ export default function Experiences() {
   const [show, setShow] = useState(false);
 
   const handleScroll = () => {
+    // ปรับค่า scrollY ให้สัมพันธ์กับขนาดจอ เพื่อให้แสดงผลลัพธ์บนมือถือ
     const scrollY = window.scrollY;
-    if (scrollY > 1500) {
+    if (scrollY > 500) { // ปรับค่าจาก 1500 ให้ต่ำลงเพื่อการแสดงผลบนมือถือที่ง่ายขึ้น
       setShow(true);
     } else {
       setShow(false);
@@ -80,17 +81,36 @@ export default function Experiences() {
         animate={{ opacity: show ? 1 : 0 }}
         transition={{ duration: 0.9 }}
       >
-        <div className="p-8">
-          <div className="text-center mb-12 mt-2">
-            <p className="font-bold text-5xl ">Experiences</p>
+        {/* ปรับ padding บนมือถือและเดสก์ท็อป */}
+        <div className="p-4 sm:p-8">
+          <div className="text-center mb-8 sm:mb-12 mt-2">
+            {/* ปรับขนาดตัวอักษรสำหรับ responsive */}
+            <p className="font-bold text-4xl sm:text-5xl">Experiences</p>
           </div>
-          <div className="relative flex justify-around items-start">
-            <div className="w-1/3 text-center space-y-4">
+          
+          {/* ส่วนหลัก: Group Project & Self-Project */}
+          {/*
+            ปรับ Responsive:
+            - flex-col: จัดวางเป็นคอลัมน์เดียวบนมือถือ (ค่าเริ่มต้น)
+            - md:flex-row: เปลี่ยนเป็นแนวนอนเมื่อหน้าจอขนาด 'md' (768px) ขึ้นไป
+            - md:justify-around: จัดระยะห่างระหว่างองค์ประกอบบนหน้าจอใหญ่
+            - items-center: จัดองค์ประกอบให้อยู่ตรงกลาง (center) บนทุกขนาดจอ
+            - gap-8: เพิ่มระยะห่างระหว่างโปรเจกต์บนมือถือ
+          */}
+          <div className="relative flex justify-center items-start flex-col md:flex-row gap-12 md:gap-4">
+            
+            {/* Project 1: Group Project */}
+            {/*
+              ปรับ Responsive:
+              - w-full: ใช้ความกว้างเต็มบนมือถือ
+              - md:w-5/12: ใช้ความกว้าง 5/12 ของหน้าจอใหญ่ เพื่อให้มีระยะห่างตรงกลาง
+            */}
+            <div className="w-full md:w-5/12 text-center space-y-4">
               <div
                 onClick={() => toggleFullscreen("Hotel")}
-                className={`bg-black p-6 rounded-lg shadow-lg ${
+                className={`bg-black p-4 sm:p-6 rounded-lg shadow-xl cursor-pointer ${
                   fullscreenVideo === "Hotel"
-                    ? "fixed inset-0 z-50 bg-black"
+                    ? "fixed inset-0 z-50 bg-black flex items-center justify-center" // เพิ่ม flex/items/justify สำหรับวิดีโอเต็มจอ
                     : ""
                 }`}
               >
@@ -98,17 +118,18 @@ export default function Experiences() {
                   autoPlay
                   loop
                   muted
+                  controls={fullscreenVideo === "Hotel"} // แสดง control เมื่อเต็มจอ
                   className={`cursor-pointer ${
                     fullscreenVideo === "Hotel"
-                      ? "w-full h-full object-contain"
-                      : "w-full h-[300px] object-cover"
+                      ? "max-w-full max-h-full object-contain"
+                      : "w-full h-[200px] sm:h-[300px] object-cover rounded-md" // ปรับความสูงสำหรับ responsive
                   }`}
                 >
                   <source src={Hotel} type="video/mp4" />
                 </video>
                 {fullscreenVideo === "Hotel" && (
                   <button
-                    className="absolute top-4 right-4 text-white bg-black bg-opacity-50 px-4 py-2 rounded"
+                    className="absolute top-4 right-4 text-white bg-red-600 bg-opacity-70 px-4 py-2 rounded-full hover:bg-red-700 transition"
                     onClick={(e) => {
                       e.stopPropagation();
                       setFullscreenVideo(null);
@@ -118,53 +139,57 @@ export default function Experiences() {
                   </button>
                 )}
               </div>
-              <p className="font-bold text-3xl">Group Project</p>
+              <p className="font-bold text-2xl sm:text-3xl">Group Project</p>
+              
+              {/* ปุ่ม Visit Website */}
               <div className="flex justify-center">
                 <a
                   href="https://hotel-book-client.onrender.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="shadow-md flex items-center space-x-2 text-blue-500 hover:underline border-2 rounded-xl p-1 px-2 border-[#3b82f6]"
+                  className="shadow-md flex items-center space-x-2 text-blue-500 hover:text-blue-700 border-2 rounded-xl p-2 px-4 border-[#3b82f6] transition duration-300"
                 >
                   <span>Visit Website</span>
-                  <FaCirclePlay className="text-lg" />
+                  <FaCirclePlay className="text-xl" />
                 </a>
               </div>
-              <div className="flex justify-center gap-4 sm:gap-8 flex-col sm:flex-row">
-                <div className="flex">
-                  <a
-                    href="https://github.com/NuttavichBig/CC18-GroupProject-Client.git"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="shadow-md flex items-center space-x-2 text-black hover:underline border-2 rounded-xl p-1 px-2 border-[#000000]"
-                  >
-                    <span>GitHub Client</span>
-                    <AiFillGithub className="text-2xl" />
-                  </a>
-                </div>
-                <div className="flex">
-                  <a
-                    href="https://github.com/NuttavichBig/CC18-GroupProject-Server.git"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="shadow-md flex items-center space-x-2 text-black hover:underline border-2 rounded-xl p-1 px-2 border-[#000000]"
-                  >
-                    <span>GitHub Server</span>
-                    <AiFillGithub className="text-2xl" />
-                  </a>
-                </div>
+              
+              {/* ปุ่ม GitHub */}
+              {/* จัดวางแนวนอนบนมือถือ แต่ถ้าแคบเกินไปจะยังคงเป็นคอลัมน์อยู่ */}
+              <div className="flex justify-center gap-4 flex-wrap"> 
+                <a
+                  href="https://github.com/NuttavichBig/CC18-GroupProject-Client.git"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="shadow-md flex items-center space-x-2 text-black hover:bg-gray-100 border-2 rounded-xl p-2 px-4 border-[#000000] transition duration-300"
+                >
+                  <span>GitHub Client</span>
+                  <AiFillGithub className="text-2xl" />
+                </a>
+                <a
+                  href="https://github.com/NuttavichBig/CC18-GroupProject-Server.git"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="shadow-md flex items-center space-x-2 text-black hover:bg-gray-100 border-2 rounded-xl p-2 px-4 border-[#000000] transition duration-300"
+                >
+                  <span>GitHub Server</span>
+                  <AiFillGithub className="text-2xl" />
+                </a>
               </div>
-              <div className="flex gap-8 sm:gap-8 flex-col sm:flex-row">
-                <p className="text-lg">Library</p>
+              
+              {/* Swiper (Library) */}
+              <div className="flex flex-col items-center gap-2">
+                <p className="text-lg font-bold">Libraries Used</p>
                 <Swiper
                   modules={[Autoplay]}
-                  autoplay={{ delay: 1000 }}
+                  autoplay={{ delay: 1000, disableOnInteraction: false }}
                   loop
                   slidesPerView={1}
+                  className="w-1/2" // ให้ Swiper ไม่กว้างเกินไป
                 >
                   {words.map((word, index) => (
                     <SwiperSlide key={index}>
-                      <span className="font-semibold text-lg text-center flex items-center cursor-move">
+                      <span className="font-semibold text-lg text-center flex justify-center items-center cursor-move py-1">
                         {word}
                       </span>
                     </SwiperSlide>
@@ -172,7 +197,7 @@ export default function Experiences() {
                 </Swiper>
               </div>
 
-              <p className="text-start leading-relaxed">
+              <p className="text-start leading-relaxed text-sm sm:text-base px-2">
                 The “Hotel Book” project is focused on creating a user-friendly
                 web application for booking hotels. Users can search for options
                 based on location, date, and other preferences. Secure payment
@@ -180,12 +205,14 @@ export default function Experiences() {
               </p>
             </div>
 
-            <div className="w-1/3 text-center space-y-4">
+            {/* Project 2: Self-Project */}
+            {/* ปรับ Responsive เหมือน Project 1 */}
+            <div className="w-full md:w-5/12 text-center space-y-4">
               <div
                 onClick={() => toggleFullscreen("Selfproject")}
-                className={`bg-black p-6 rounded-lg shadow-lg h-full w-full ${
+                className={`bg-black p-4 sm:p-6 rounded-lg shadow-xl cursor-pointer ${
                   fullscreenVideo === "Selfproject"
-                    ? "fixed inset-0 z-50 bg-black"
+                    ? "fixed inset-0 z-50 bg-black flex items-center justify-center"
                     : ""
                 }`}
               >
@@ -193,17 +220,18 @@ export default function Experiences() {
                   autoPlay
                   loop
                   muted
+                  controls={fullscreenVideo === "Selfproject"}
                   className={`cursor-pointer ${
                     fullscreenVideo === "Selfproject"
-                      ? "w-full h-full object-contain"
-                      : "w-full h-[300px] object-cover"
+                      ? "max-w-full max-h-full object-contain"
+                      : "w-full h-[200px] sm:h-[300px] object-cover rounded-md"
                   }`}
                 >
                   <source src={Selfproject} type="video/mp4" />
                 </video>
                 {fullscreenVideo === "Selfproject" && (
                   <button
-                    className="absolute top-4 right-4 text-white bg-black bg-opacity-50 px-4 py-2 rounded"
+                    className="absolute top-4 right-4 text-white bg-red-600 bg-opacity-70 px-4 py-2 rounded-full hover:bg-red-700 transition"
                     onClick={(e) => {
                       e.stopPropagation();
                       setFullscreenVideo(null);
@@ -213,118 +241,124 @@ export default function Experiences() {
                   </button>
                 )}
               </div>
-              <p className="font-bold text-3xl">Self-Project</p>
+              <p className="font-bold text-2xl sm:text-3xl">Self-Project</p>
+              
+              {/* ปุ่ม Visit Website */}
               <div className="flex justify-center">
                 <a
                   href="https://shutterroller.onrender.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="shadow-md flex items-center space-x-2 text-blue-500 hover:underline border-2 rounded-xl p-1 px-2 border-[#3b82f6]"
+                  className="shadow-md flex items-center space-x-2 text-blue-500 hover:text-blue-700 border-2 rounded-xl p-2 px-4 border-[#3b82f6] transition duration-300"
                 >
                   <span>Visit Website</span>
-                  <FaCirclePlay className="text-lg" />
+                  <FaCirclePlay className="text-xl" />
                 </a>
               </div>
-              <div className="flex justify-center gap-4 sm:gap-8 flex-col sm:flex-row">
-                <div className="flex">
-                  <a
-                    href="https://github.com/KonkamonF/ShutterRollerFront.git"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="shadow-md flex items-center space-x-2 text-black hover:underline border-2 rounded-xl p-1 px-2 border-[#000000]"
-                  >
-                    <span>GitHub Client</span>
-                    <AiFillGithub className="text-2xl" />
-                  </a>
-                </div>
-                <div className="flex">
-                  <a
-                    href="https://github.com/KonkamonF/ShutterRollerBack.git"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="shadow-md flex items-center space-x-2 text-black hover:underline border-2 rounded-xl p-1 px-2 border-[#000000]"
-                  >
-                    <span>GitHub Server</span>
-                    <AiFillGithub className="text-2xl" />
-                  </a>
-                </div>
+              
+              {/* ปุ่ม GitHub */}
+              <div className="flex justify-center gap-4 flex-wrap">
+                <a
+                  href="https://github.com/KonkamonF/ShutterRollerFront.git"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="shadow-md flex items-center space-x-2 text-black hover:bg-gray-100 border-2 rounded-xl p-2 px-4 border-[#000000] transition duration-300"
+                >
+                  <span>GitHub Client</span>
+                  <AiFillGithub className="text-2xl" />
+                </a>
+                <a
+                  href="https://github.com/KonkamonF/ShutterRollerBack.git"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="shadow-md flex items-center space-x-2 text-black hover:bg-gray-100 border-2 rounded-xl p-2 px-4 border-[#000000] transition duration-300"
+                >
+                  <span>GitHub Server</span>
+                  <AiFillGithub className="text-2xl" />
+                </a>
               </div>
-              <div className="flex gap-8 sm:gap-8 flex-col sm:flex-row">
-                <p className="text-lg">Library</p>
+              
+              {/* Swiper (Library) */}
+              <div className="flex flex-col items-center gap-2">
+                <p className="text-lg font-bold">Libraries Used</p>
                 <Swiper
                   modules={[Autoplay]}
-                  autoplay={{ delay: 1000 }}
+                  autoplay={{ delay: 1000, disableOnInteraction: false }}
                   loop
                   slidesPerView={1}
+                  className="w-1/2"
                 >
                   {word.map((word, index) => (
                     <SwiperSlide key={index}>
-                      <span className="font-semibold text-lg text-center flex items-center cursor-move">
+                      <span className="font-semibold text-lg text-center flex justify-center items-center cursor-move py-1">
                         {word}
                       </span>
                     </SwiperSlide>
                   ))}
                 </Swiper>
               </div>
-              <p className="text-start leading-relaxed">
+              
+              <p className="text-start leading-relaxed text-sm sm:text-base px-2">
                 The website will feature product listings, user accounts, users
-                can be asking questions,payment deposits processing, order
-                management, and admin can manage users information,check status
+                can be asking questions, payment deposits processing, order
+                management, and admin can manage users information, check status
                 deposit payment. It aims to provide a seamless online shopping
                 experience for customers.
               </p>
             </div>
           </div>
-          <div className="mt-16 text-center max-w-4xl mx-auto space-y-4">
+          
+          {/* ส่วนเสริม: Personal Experience และ Swiper รูปภาพ */}
+          <div className="mt-12 sm:mt-16 text-center max-w-4xl mx-auto space-y-4">
             <Swiper
               modules={[Navigation, Pagination, Autoplay]}
               navigation
-              autoplay={{ delay: 1500 }}
+              autoplay={{ delay: 1500, disableOnInteraction: false }}
               pagination={{ clickable: true }}
               loop
-              className="p-6 rounded-lg shadow-lg"
-              style={{ height: "500px" }}
+              className="p-4 sm:p-6 rounded-lg shadow-lg"
+              style={{ height: "300px", maxWidth: "100%" }} // ปรับความสูงให้เหมาะสมกับ responsive
             >
               <SwiperSlide>
                 <img
                   src={G2}
-                  alt="Slide"
-                  className="w-full h-full object-cover rounded-lg"
+                  alt="Project Screenshot 2"
+                  className="w-full h-full object-contain rounded-lg" // ใช้ object-contain เพื่อไม่ให้ภาพถูกตัด
                 />
               </SwiperSlide>
               <SwiperSlide>
                 <img
                   src={G}
-                  alt="Slide 1"
-                  className="w-full h-full object-cover rounded-lg"
+                  alt="Project Screenshot 1"
+                  className="w-full h-full object-contain rounded-lg"
                 />
               </SwiperSlide>
               <SwiperSlide>
                 <img
                   src={G1}
-                  alt="Slide 2"
-                  className="w-full h-full object-cover rounded-lg"
+                  alt="Project Screenshot 3"
+                  className="w-full h-full object-contain rounded-lg"
                 />
               </SwiperSlide>
               <SwiperSlide>
                 <img
                   src={H}
-                  alt="Slide 3"
-                  className="w-full h-full object-cover rounded-lg"
+                  alt="Project Screenshot 4"
+                  className="w-full h-full object-contain rounded-lg"
                 />
               </SwiperSlide>
             </Swiper>
 
-            <p className="font-bold text-xl">Personal Experience</p>
-            <p className="leading-relaxed">
+            <p className="font-bold text-xl sm:text-2xl pt-4">Personal Experience</p>
+            <p className="leading-relaxed text-sm sm:text-base px-2">
               After six years of experience in customer service, I am eager to
               transition into the field of software development. My time in
-              customer service has equipped me with strong problem-solving,
-              communication, and collaboration skills. I am dedicated to
+              customer service has equipped me with **strong problem-solving,
+              communication, and collaboration skills**. I am dedicated to
               applying software development skills in a new environment that
               fosters innovation and continuous learning. My goal is to grow as
-              a developer while delivering applications that are both functional
-              and visually appealing.
+              a developer while delivering applications that are both **functional
+              and visually appealing**.
             </p>
           </div>
         </div>
