@@ -7,6 +7,7 @@ import Profile from "../components/Profile";
 import { HiMenu } from "react-icons/hi";
 import { IoClose } from "react-icons/io5";
 import ExperiencesCard from "../components/ExperiencesCard";
+import ImageCarousel from "../components/ImageCarousel";
 
 export default function Main() {
   const [isOpen, setIsOpen] = useState(false);
@@ -62,6 +63,7 @@ export default function Main() {
         <div className="pb-[50px]" id="experiences-section">
           <Experiences />
           <ExperiencesCard />
+          <ImageCarousel/>
         </div>
       </div>
     </>
