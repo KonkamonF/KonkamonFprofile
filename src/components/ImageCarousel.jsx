@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react'; // <-- Imported useEffect
 
 // Data for the images
 const images = [
-  { src: 'https://picsum.photos/id/1018/600/400', alt: 'Forest Mountains' },
+  { src: 'https://picsum.photos/id/1020/600/400', alt: 'Forest Mountains' },
   { src: 'https://picsum.photos/id/1040/600/400', alt: 'Lake Reflection' },
-  { src: 'https://picsum.photos/id/1080/600/400', alt: 'Snowy Peak' },
-  { src: 'https://picsum.photos/id/1069/600/400', alt: 'Cloudy Landscape' },
-  { src: 'https://picsum.photos/id/1025/600/400', alt: 'Puppy' },
-  { src: 'https://picsum.photos/id/1000/600/400', alt: 'Boat on Water' },
-  { src: 'https://picsum.photos/id/1004/600/400', alt: 'Waterfall' },
+  { src: 'https://picsum.photos/id/1079/600/400', alt: 'Snowy Peak' },
+  { src: 'https://picsum.photos/id/1065/600/400', alt: 'Cloudy Landscape' },
+  { src: 'https://picsum.photos/id/1032/600/400', alt: 'Puppy' },
+  { src: 'https://picsum.photos/id/1015/600/400', alt: 'Boat on Water' },
+  { src: 'https://picsum.photos/id/1002/600/400', alt: 'Waterfall' },
 ];
 
 export default function ImageCarousel() {
