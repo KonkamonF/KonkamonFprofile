@@ -1,0 +1,68 @@
+/* In a separate CSS file, e.g., ExperiencesCard.css */
+.experience-card {
+  border: none;
+  border-radius: 15px;
+  padding: 30px;
+  width: 320px;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #fff;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--card-background-color); /* Uses CSS variables */
+}
+
+.experience-card:hover {
+  transform: translateY(-10px) scale(1.03); /* Lifts and slightly enlarges */
+  box-shadow: 0 15px 30px var(--card-box-shadow-color); /* Enhanced shadow */
+}
+
+/* Other styles from the JS could also be moved here */
+
+/* src/index.css or App.css */
+
+/* Custom styles for Swiper navigation arrows */
+.swiper-button-prev,
+.swiper-button-next {
+  color: #333 !important; /* Darker arrows */
+  background-color: rgba(255, 255, 255, 0.7); /* Slightly transparent white background */
+  border-radius: 50%;
+  width: 40px !important;
+  height: 40px !important;
+  transition: all 0.3s ease;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  background-color: rgba(255, 255, 255, 1);
+  transform: scale(1.1);
+}
+
+/* Custom styles for Swiper pagination dots */
+.swiper-pagination-bullet {
+  background: #aaa !important; /* Grey dots */
+  opacity: 0.7 !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #FF9800 !important; /* Orange active dot */
+  opacity: 1 !important;
+  transform: scale(1.2);
+}
+
+/* Hover effect for cards inside Swiper (if not using inline JS) */
+.experience-slide-card {
+  /* Reuse basic styles from the JS */
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience-slide-card:hover {
+  transform: translateY(-10px) scale(1.03); /* Lifts and slightly enlarges */
+  box-shadow: 0 15px 30px rgba(0,0,0,0.4); /* Enhanced shadow */
+}
