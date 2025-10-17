@@ -87,7 +87,7 @@ const styles = {
   header: {
     textAlign: 'center', 
     marginBottom: '40px', 
-    color: '#3f51b5', 
+    color: '#795353', 
     fontSize: '2.8em', // ขนาดใหญ่ขึ้น
     fontWeight: 'bold',
     textTransform: 'uppercase',
@@ -130,7 +130,7 @@ const ExperienceCard = ({ experience }) => {
 
 export default function ExperiencesCard() {
   return (
-    <div className="experiences-section-wrapper" style={{ padding: '60px 20px', background: '#e8eaf6' }}>
+    <div className="experiences-section-wrapper" style={{ padding: '60px 20px', background: '#FFFFFF' }}>
       <h2 style={styles.header}>
         My Professional Experiences
       </h2>

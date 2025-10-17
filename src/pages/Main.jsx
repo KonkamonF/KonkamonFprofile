@@ -61,8 +61,8 @@ export default function Main() {
         </div>
         <div className="pb-[50px]" id="experiences-section">
           <Experiences />
+          <ExperiencesCard />
         </div>
-        <ExperiencesCard/>
       </div>
     </>
   );
