@@ -58,8 +58,8 @@ export default function ImageCarousel() {
       <div 
         className="absolute inset-0 z-0" 
         style={{
-          backdropFilter: 'blur(10px)', // Blur effect
-          backgroundColor: 'rgba(0, 0, 0, 0.6)', // Darken effect
+          backdropFilter: 'blur(0.1px)', // Blur effect
+          backgroundColor: 'rgba(0, 0, 0, 0.1)', // Darken effect
         }}
       ></div>
       
@@ -74,7 +74,7 @@ export default function ImageCarousel() {
         >
           {images.map((image, index) => {
             const isCenter = index === currentIndex;
-            const itemScale = isCenter ? "scale-110" : "scale-90"; 
+            const itemScale = isCenter ? "scale-150" : "scale-90"; 
             const itemShadow = isCenter ? "shadow-2xl" : "shadow-md";
             const itemOpacity = isCenter ? "opacity-100" : "opacity-70"; 
 
@@ -91,12 +91,12 @@ export default function ImageCarousel() {
                 <img
                   src={image.src}
                   alt={image.alt}
-                  className="w-full h-auto object-cover rounded-lg"
-                  style={{ aspectRatio: '3/2' }} // Maintain aspect ratio for images
+                  className="w-screen h-auto object-cover rounded-lg"
+                  style={{ aspectRatio: '2/2' }} // Maintain aspect ratio for images
                 />
                 {isCenter && (
                     <div className="absolute inset-x-0 bottom-4 flex justify-center">
-                        <div className="text-center text-white text-3xl font-bold uppercase drop-shadow-lg bg-black bg-opacity-40 px-6 py-2 rounded-lg">
+                        <div className="text-center text-white text-3xl font-bold uppercase drop-shadow-lg bg-black bg-opacity-20 px-6 py-2 rounded-lg">
                             {image.alt}
                         </div>
                     </div>
@@ -109,13 +109,13 @@ export default function ImageCarousel() {
         {/* Navigation Arrows */}
         <button
           onClick={goToPrev}
-          className="absolute left-4 top-1/2 -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-3 rounded-full hover:bg-opacity-75 transition-colors z-20"
+          className="absolute left-4 top-1/2 -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-3 rounded-full hover:bg-opacity-85 transition-colors z-20"
         >
           &lt;
         </button>
         <button
           onClick={goToNext}
-          className="absolute right-4 top-1/2 -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-3 rounded-full hover:bg-opacity-75 transition-colors z-20"
+          className="absolute right-4 top-1/2 -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-3 rounded-full hover:bg-opacity-85 transition-colors z-20"
         >
           &gt;
         </button>
@@ -133,7 +133,7 @@ export default function ImageCarousel() {
             key={index}
             onClick={() => goToSlide(index)}
             className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              index === currentIndex ? "bg-orange-500 scale-125" : "bg-gray-500"
+              index === currentIndex ? "bg-orange-500 scale-90" : "bg-gray-600"
             }`}
           ></button>
         ))}
