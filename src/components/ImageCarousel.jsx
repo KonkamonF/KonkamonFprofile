@@ -1,14 +1,18 @@
-import React, { useState, useEffect } from 'react'; // <-- Imported useEffect
+import React, { useState, useEffect } from "react";
+// Assuming the path to your assets is correct
+import G from "../assets/G.jpg";
+import G1 from "../assets/G1.jpg";
+import G2 from "../assets/G2.jpg";
+import H from "../assets/H.jpg";
 
-// Data for the images
 const images = [
-  { src: 'https://picsum.photos/id/1020/600/400', alt: 'Forest Mountains' },
-  { src: 'https://picsum.photos/id/1040/600/400', alt: 'Lake Reflection' },
-  { src: 'https://picsum.photos/id/1079/600/400', alt: 'Snowy Peak' },
-  { src: 'https://picsum.photos/id/1065/600/400', alt: 'Cloudy Landscape' },
-  { src: 'https://picsum.photos/id/1032/600/400', alt: 'Puppy' },
-  { src: 'https://picsum.photos/id/1015/600/400', alt: 'Boat on Water' },
-  { src: 'https://picsum.photos/id/1002/600/400', alt: 'Waterfall' },
+  { src: G, alt: "Forest Mountains" },
+  { src: G1, alt: "Lake Reflection" },
+  { src: G2, alt: "Snowy Peak" },
+  { src: H, alt: "Cloudy Landscape" },
+  { src: "https://picsum.photos/id/1032/600/400", alt: "Puppy" },
+  { src: "https://picsum.photos/id/1015/600/400", alt: "Boat on Water" },
+  { src: "https://picsum.photos/id/1002/600/400", alt: "Waterfall" },
 ];
 
 export default function ImageCarousel() {
@@ -16,14 +20,14 @@ export default function ImageCarousel() {
 
   // Looping logic for navigation
   const goToPrev = () => {
-    setCurrentIndex((prevIndex) => 
-      (prevIndex === 0) ? images.length - 1 : prevIndex - 1
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
   };
 
   const goToNext = () => {
-    setCurrentIndex((prevIndex) => 
-      (prevIndex === images.length - 1) ? 0 : prevIndex + 1
+    setCurrentIndex((prevIndex) =>
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
     );
   };
 
@@ -32,6 +36,7 @@ export default function ImageCarousel() {
   };
 
   // --- Auto-play Logic using useEffect ---
+  // The logic remains the same, ensuring auto-play works
   useEffect(() => {
     const intervalId = setInterval(() => {
       // Automatically advance to the next slide every 3 seconds
@@ -40,103 +45,118 @@ export default function ImageCarousel() {
 
     // Cleanup function: clears the interval when the component unmounts or re-renders
     return () => clearInterval(intervalId);
-  }, [currentIndex]); // Re-run effect when currentIndex changes to reset the timer (optional, but ensures consistent timing)
+  }, [currentIndex]); // Re-run effect when currentIndex changes to reset the timer
 
-  // Get the current center image's source for the background
-  const currentBackgroundImage = images[currentIndex].src;
+  // Get the current main image's source for the background
+  const currentImage = images[currentIndex];
+  const currentBackgroundImage = currentImage.src;
 
   return (
-    <div 
+    <div
       className="relative w-full overflow-hidden flex flex-col items-center justify-center p-0 m-0"
       style={{
-        minHeight: '100vh', // Ensure it covers the full viewport height
+        minHeight: "100vh",
         background: `url(${currentBackgroundImage}) no-repeat center center / cover`,
-        transition: 'background-image 0.7s ease-in-out', // Smooth transition for background image
+        transition: "background-image 0.7s ease-in-out",
       }}
     >
       {/* Overlay for blur and darken effect */}
-      <div 
-        className="absolute inset-0 z-0" 
+      <div
+        className="absolute inset-0 z-0"
         style={{
-          backdropFilter: 'blur(0.1px)', // Blur effect
-          backgroundColor: 'rgba(0, 0, 0, 0.1)', // Darken effect
+          backdropFilter: "blur(2px)",
+          backgroundColor: "rgba(0, 0, 0, 0.2)",
         }}
       ></div>
-      
-      {/* Main Carousel Area - now relative to this blurred background */}
-      <div className="relative w-full max-w-[1200px] mx-auto overflow-hidden z-10 py-20"> {/* py-20 to ensure content has space */}
-        {/* The Carousel Track */}
-        <div 
-          className="flex transition-transform duration-500 ease-in-out py-8"
-          style={{ 
-            transform: `translateX(calc(-${currentIndex * 20}% + 40%))` // Centers the current item (assuming 5 visible)
-          }} 
-        >
-          {images.map((image, index) => {
-            const isCenter = index === currentIndex;
-            const itemScale = isCenter ? "scale-150" : "scale-90"; 
-            const itemShadow = isCenter ? "shadow-2xl" : "shadow-md";
-            const itemOpacity = isCenter ? "opacity-100" : "opacity-70"; 
 
-            return (
-              <div
-                key={index}
-                className={`flex-none w-1/5 p-2 transition-all duration-500 ease-in-out transform ${itemScale} ${itemShadow} ${itemOpacity}`}
-                style={{
-                  minWidth: '20%', 
-                  zIndex: isCenter ? 10 : 1, 
-                  boxShadow: isCenter ? '0 15px 30px rgba(255, 165, 0, 0.6)' : 'none', // Orange shadow for highlight
-                }}
-              >
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="w-screen h-auto object-cover rounded-lg"
-                  style={{ aspectRatio: '2/2' }} // Maintain aspect ratio for images
-                />
-                {isCenter && (
-                    <div className="absolute inset-x-0 bottom-4 flex justify-center">
-                        <div className="text-center text-white text-3xl font-bold uppercase drop-shadow-lg bg-black bg-opacity-20 px-6 py-2 rounded-lg">
-                            {image.alt}
-                        </div>
-                    </div>
-                )}
-              </div>
-            );
-          })}
+      {/* Main Content Container (relative to the background) */}
+      <div className="relative w-full max-w-[1200px] mx-auto z-10 py-10 flex flex-col items-center">
+        {/*
+        ########################################
+        # 1. NEW: Static Main Image Display #
+        ########################################
+        */}
+        <div className="w-full max-w-[800px] mb-8 relative">
+          <img
+            src={currentImage.src}
+            alt={currentImage.alt}
+            className="w-full h-auto object-cover rounded-xl shadow-2xl transition-opacity duration-700"
+            style={{ aspectRatio: "16/9" }} // A common aspect ratio for a main display
+          />
+          {/* Main Title Overlay */}
+          <div className="absolute inset-x-0 bottom-4 flex justify-center">
+            <div className="text-center text-white text-4xl md:text-6xl font-extrabold uppercase drop-shadow-lg bg-black/40 px-8 py-3 rounded-lg backdrop-blur-sm">
+              {currentImage.alt}
+            </div>
+          </div>
         </div>
-        
-        {/* Navigation Arrows */}
-        <button
-          onClick={goToPrev}
-          className="absolute left-4 top-1/2 -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-3 rounded-full hover:bg-opacity-85 transition-colors z-20"
-        >
-          &lt;
-        </button>
-        <button
-          onClick={goToNext}
-          className="absolute right-4 top-1/2 -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-3 rounded-full hover:bg-opacity-85 transition-colors z-20"
-        >
-          &gt;
-        </button>
-      </div>
 
-      {/* Main Title below carousel, now always visible and centered */}
-      <div className="relative mt-8 text-white text-6xl font-extrabold uppercase tracking-wide drop-shadow-xl z-10">
-        {images[currentIndex].alt} {/* Displays alt text of current image as main title */}
-      </div>
-
-      {/* Pagination Dots */}
-      <div className="flex justify-center mt-12 space-x-2 z-10">
-        {images.map((_, index) => (
+        <div className="relative w-full overflow-hidden max-w-[1000px] mt-4">
           <button
-            key={index}
-            onClick={() => goToSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              index === currentIndex ? "bg-orange-500 scale-90" : "bg-gray-600"
-            }`}
-          ></button>
-        ))}
+            onClick={goToPrev}
+            className="
+      absolute left-2 top-1/2 -translate-y-1/2
+      bg-gray-800 bg-opacity-50 text-white
+      p-2 rounded-full shadow-md
+      hover:bg-opacity-80 transition
+      z-20
+    "
+          >
+            &lt;
+          </button>
+
+          <button
+            onClick={goToNext}
+            className="
+      absolute right-2 top-1/2 -translate-y-1/2
+      bg-gray-800 bg-opacity-50 text-white
+      p-2 rounded-full shadow-md
+      hover:bg-opacity-80 transition
+      z-20
+    "
+          >
+            &gt;
+          </button>
+
+          {/* Carousel Track for Thumbnails */}
+          <div
+            className="flex transition-transform duration-500 ease-in-out"
+            style={{
+              // Show about 7 thumbnails at a time (100% / 7 = ~14.28%)
+              transform: `translateX(calc(-${currentIndex * 14.28}% + 42.84%))`, // Centers the current item (14.28 * 3 = 42.84)
+            }}
+          >
+            {images.map((image, index) => {
+              const isCenter = index === currentIndex;
+
+              return (
+                <div
+                  key={index}
+                  onClick={() => goToSlide(index)} // Click to select the main image
+                  className={`flex-none w-[14.28%] p-2 cursor-pointer transition-all duration-300 ease-in-out transform ${
+                    isCenter ? "scale-110 opacity-100" : "scale-95 opacity-60"
+                  }`}
+                  style={{
+                    minWidth: "14.28%", // Ensure 7 items fit
+                    zIndex: isCenter ? 10 : 1,
+                    // Highlight border for the active/selected thumbnail
+                    border: isCenter
+                      ? "4px solid white"
+                      : "4px solid transparent",
+                    borderRadius: "2px",
+                  }}
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="w-full h-full object-cover rounded-lg shadow-lg"
+                    style={{ aspectRatio: "4/3" }} // Standard thumbnail aspect ratio
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </div>
   );
