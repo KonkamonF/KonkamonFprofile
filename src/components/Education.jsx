@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import University from "../assets/University.png";
+import utcc from "../assets/utcc.png";
 import code from "../assets/code.png";
 import { motion } from "framer-motion";
 
@@ -30,10 +31,10 @@ export default function Education() {
         animate={{ opacity: show ? 1 : 0 }}
         transition={{ duration: 0.9 }}
       >
-        <div className="text-center font-semibold text-3xl mb-8">
+        <div className="text-center font-bold text-4xl sm:text-5xl mx-auto py-8 mb-12">
           Education 🎓
         </div>
-        
+
         {/*
           การปรับ Responsive:
           - flex-col: เป็นค่าเริ่มต้น (หน้าจอมือถือ) ให้อยู่ในแนวตั้ง
@@ -41,8 +42,28 @@ export default function Education() {
           - gap-8: ระยะห่างในทุกขนาด
           - sm:gap-36: เพิ่มระยะห่างเป็น 36 เมื่อหน้าจอขนาด 'sm' ขึ้นไป
         */}
-        <div className="flex items-center justify-center gap-8 sm:gap-36 flex-col sm:flex-row">
-          
+        <div className="flex items-center justify-center gap-8 sm:gap-36 flex-col sm:flex-row sm:items-start">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: show ? 1 : 0 }}
+            transition={{ duration: 0.9 }}
+            className="mb-8 sm:mb-0" // เพิ่มระยะห่างด้านล่างสำหรับหน้าจอเล็ก
+          >
+            <div className="flex flex-col items-center">
+              {" "}
+              {/* จัดให้อยู่ตรงกลางในแนวตั้ง */}
+              <img
+                src={utcc}
+                alt="University of the Thai Chamber of Commerce"
+                className="w-[180px] sm:w-[200px] mb-2" // ปรับขนาดภาพเล็กน้อยสำหรับ responsive
+              />
+              <div className="font-semibold w-[280px] sm:w-[250px] text-base sm:text-lg text-center">
+                2025-2026 <br /> Master of Engineering (Computer Engineering and
+                Financial Technology) at University of the Thai Chamber of
+                Commerce
+              </div>
+            </div>
+          </motion.div>
           {/* ส่วนที่ 1: มหาวิทยาลัย */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -50,14 +71,17 @@ export default function Education() {
             transition={{ duration: 0.9 }}
             className="mb-8 sm:mb-0" // เพิ่มระยะห่างด้านล่างสำหรับหน้าจอเล็ก
           >
-            <div className="flex flex-col items-center"> {/* จัดให้อยู่ตรงกลางในแนวตั้ง */}
+            <div className="flex flex-col items-center">
+              {" "}
+              {/* จัดให้อยู่ตรงกลางในแนวตั้ง */}
               <img
                 src={University}
                 alt="Assumption University"
                 className="w-[180px] sm:w-[200px] mb-2" // ปรับขนาดภาพเล็กน้อยสำหรับ responsive
               />
               <div className="font-semibold w-[280px] sm:w-[200px] text-base sm:text-lg text-center">
-                Bachelor degree in Business English at Assumption University
+                2013-2018 <br /> Bachelor degree in Business English at
+                Assumption University
               </div>
             </div>
           </motion.div>
@@ -68,19 +92,22 @@ export default function Education() {
             animate={{ opacity: show ? 1 : 0 }}
             transition={{ duration: 0.9 }}
           >
-            <div className="flex flex-col items-center"> {/* จัดให้อยู่ตรงกลางในแนวตั้ง */}
+            <div className="flex flex-col items-center">
+              {" "}
+              {/* จัดให้อยู่ตรงกลางในแนวตั้ง */}
               <img
                 src={code}
                 alt="Software Park CodeCamp"
                 className="w-[180px] sm:w-[200px] mb-2" // ปรับขนาดภาพเล็กน้อยสำหรับ responsive
               />
               <div className="font-semibold w-[280px] sm:w-[200px] text-base sm:text-lg text-center">
-                Certificate Software Park CodeCamp #18 2024 Full-Stack
-                JavaScript Developer
+                2024
+                <br />
+                Certificate Software Park CodeCamp #18 Full-Stack JavaScript
+                Developer
               </div>
             </div>
           </motion.div>
-
         </div>
       </motion.div>
     </>
