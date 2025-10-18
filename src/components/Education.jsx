@@ -55,7 +55,7 @@ export default function Education() {
               <img
                 src={utcc}
                 alt="University of the Thai Chamber of Commerce"
-                className="w-[180px] sm:w-[200px] mb-2" // ปรับขนาดภาพเล็กน้อยสำหรับ responsive
+                className="w-[180px] sm:w-[200px] mb-2 hover:scale-105" // ปรับขนาดภาพเล็กน้อยสำหรับ responsive
               />
               <div className="font-semibold w-[280px] sm:w-[250px] text-base sm:text-lg text-center">
                 2025-2026 <br /> Master of Engineering (Computer Engineering and
@@ -77,7 +77,7 @@ export default function Education() {
               <img
                 src={University}
                 alt="Assumption University"
-                className="w-[180px] sm:w-[200px] mb-2" // ปรับขนาดภาพเล็กน้อยสำหรับ responsive
+                className="w-[180px] sm:w-[200px] mb-2 hover:scale-105" // ปรับขนาดภาพเล็กน้อยสำหรับ responsive
               />
               <div className="font-semibold w-[280px] sm:w-[200px] text-base sm:text-lg text-center">
                 2013-2018 <br /> Bachelor degree in Business English at
@@ -98,7 +98,7 @@ export default function Education() {
               <img
                 src={code}
                 alt="Software Park CodeCamp"
-                className="w-[180px] sm:w-[200px] mb-2" // ปรับขนาดภาพเล็กน้อยสำหรับ responsive
+                className="w-[180px] sm:w-[200px] mb-2 hover:scale-105" // ปรับขนาดภาพเล็กน้อยสำหรับ responsive
               />
               <div className="font-semibold w-[280px] sm:w-[200px] text-base sm:text-lg text-center">
                 2024
