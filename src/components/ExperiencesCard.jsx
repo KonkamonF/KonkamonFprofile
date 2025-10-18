@@ -9,7 +9,7 @@ const experiences = [
     details: "Developed and customized Odoo ERP system modules, enhancing business processes and operational efficiency.",
     color: "#FF9800", // Vibrant Orange
     textColor: '#FFFFFF',
-    gradient: 'linear-gradient(135deg, #FF9800 0%, #FF5722 100%)' // Orange Gradient
+    gradient: 'linear-gradient(135deg, #FF9800 0%, #FF5799 100%)' // Orange Gradient
   },
   {
     title: "Full-Stack Developer",
@@ -17,15 +17,23 @@ const experiences = [
     details: "Built responsive web applications from the ground up, working across front-end (React) and back-end (Node.js/Express).",
     color: "#E91E63", // Vibrant Pink
     textColor: '#FFFFFF',
-    gradient: 'linear-gradient(135deg, #E91E63 0%, #C2185B 100%)' // Pink Gradient
+    gradient: 'linear-gradient(135deg, #E91E63 0%, #799EFF 100%)' // Pink Gradient
   },
   {
     title: "Hospital Customer Service",
     duration: "1 Year",
     details: "Provided empathetic and efficient support to patients and visitors, ensuring high satisfaction in a fast-paced environment.",
     color: "#FFEB3B", // Bright Yellow
-    textColor: '#333333', // Dark text for contrast on bright yellow
-    gradient: '#FFEB3B' // Solid Yellow
+    textColor: '#FFFFFF', // Dark text for contrast on bright yellow
+    gradient: 'linear-gradient(135deg, #B4E50D 0%, #FCCD2A 100%)' // Solid Yellow
+  },
+  {
+    title: "Hospital Customer Service",
+    duration: "1 Year",
+    details: "Provided empathetic and efficient support to patients and visitors, ensuring high satisfaction in a fast-paced environment.",
+    color: "#FFEB3B", // Bright Yellow
+    textColor: '#FFFFFF', // Dark text for contrast on bright yellow
+    gradient: 'linear-gradient(135deg, #77BEF0 0%, #00FF9C 100%)' // Solid Yellow
   },
 ];
 
@@ -35,7 +43,6 @@ const styles = {
   experiencesGrid: {
     display: 'flex',
     flexWrap: 'wrap',
-    gap: '30px',
     justifyContent: 'center',
     maxWidth: '1200px', // จำกัดความกว้างสูงสุดเพื่อให้การ์ดดูสวยงาม
     margin: '0 auto',
@@ -47,7 +54,7 @@ const styles = {
     maxWidth: '350px', // จำกัดความกว้างสูงสุดต่อการ์ด
     
     border: 'none',
-    borderRadius: '15px',
+    borderRadius: '20px',
     padding: '30px',
     minHeight: '320px', // เพิ่มความสูงให้มากขึ้นและเท่ากันทุกการ์ด
     display: 'flex',
@@ -61,7 +68,7 @@ const styles = {
     textAlign: 'center', 
     // เพิ่มเอฟเฟกต์ hover ผ่านการฟัง event ใน React (สำหรับ production ควรใช้ CSS Class)
     ':hover': {
-        transform: 'translateY(-10px) scale(1.02)',
+        transform: 'translateY(-20px) scale(1.05)',
         boxShadow: '0 20px 40px rgba(0,0,0,0.3)',
     }
   },
@@ -130,7 +137,7 @@ const ExperienceCard = ({ experience }) => {
 
 export default function ExperiencesCard() {
   return (
-    <div className="experiences-section-wrapper" style={{ padding: '60px 20px', background: '#FFFFFF' }}>
+    <div className="experiences-section-wrapper" style={{ padding: '60px 20px'}}>
       <h2 style={styles.header}>
         My Professional Experiences
       </h2>
