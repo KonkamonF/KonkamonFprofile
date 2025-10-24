@@ -7,12 +7,10 @@ import { FaCirclePlay } from "react-icons/fa6";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import Hotel from "../assets/HotelFinalReal.mp4";
 import Selfproject from "../assets/Selfproject.mp4";
-import G from "../assets/G.jpg";
-import G1 from "../assets/G1.jpg";
-import G2 from "../assets/G2.jpg";
-import H from "../assets/H.jpg";
+import ImageCarousel from "./ImageCarousel";
 import { AiFillGithub } from "react-icons/ai";
 import { motion } from "framer-motion";
+import ExperiencesCard from "./ExperiencesCard";
 
 export default function Experiences() {
   const [fullscreenVideo, setFullscreenVideo] = useState(null);
@@ -309,48 +307,9 @@ export default function Experiences() {
           </div>
 
           {/* ส่วนเสริม: Personal Experience และ Swiper รูปภาพ */}
+           <ExperiencesCard/>
           <div className="mt-12 sm:mt-16 text-center max-w-4xl mx-auto space-y-4">
-            <Swiper
-              modules={[Navigation, Pagination, Autoplay]}
-              navigation
-              autoplay={{
-                delay: 2000,
-                disableOnInteraction: false,
-              }}
-              pagination={{ clickable: true }}
-              loop
-              className="p-4 sm:p-6 rounded-lg shadow-lg bg-black"
-              style={{ height: "400px", maxWidth: "100%" }} // ปรับความสูงให้เหมาะสมกับ responsive
-            >
-              <SwiperSlide>
-                <img
-                  src={G2}
-                  alt="Project Screenshot 2"
-                  className="w-full h-full object-contain rounded-lg" // ใช้ object-contain เพื่อไม่ให้ภาพถูกตัด
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img
-                  src={G}
-                  alt="Project Screenshot 1"
-                  className="w-full h-full object-contain rounded-lg"
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img
-                  src={G1}
-                  alt="Project Screenshot 3"
-                  className="w-full h-full object-contain rounded-lg"
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img
-                  src={H}
-                  alt="Project Screenshot 4"
-                  className="w-full h-full object-contain rounded-lg"
-                />
-              </SwiperSlide>
-            </Swiper>
+            <ImageCarousel />
 
             <p className="font-bold text-xl sm:text-2xl pt-4">
               Personal Experience

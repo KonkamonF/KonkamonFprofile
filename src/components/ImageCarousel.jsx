@@ -4,15 +4,20 @@ import G from "../assets/G.jpg";
 import G1 from "../assets/G1.jpg";
 import G2 from "../assets/G2.jpg";
 import H from "../assets/H.jpg";
+import G3 from "../assets/G3.jpg";
+import G4 from "../assets/G4.jpg";
+import GG from "../assets/GG.jpg";
+
 
 const images = [
-  { src: G, alt: "Forest Mountains" },
-  { src: G1, alt: "Lake Reflection" },
-  { src: G2, alt: "Snowy Peak" },
-  { src: H, alt: "Cloudy Landscape" },
-  { src: "https://picsum.photos/id/1032/600/400", alt: "Puppy" },
-  { src: "https://picsum.photos/id/1015/600/400", alt: "Boat on Water" },
-  { src: "https://picsum.photos/id/1002/600/400", alt: "Waterfall" },
+  { src: H, alt: "Customer Service Hospital" },
+  { src: G1, alt: "Programming CodeCamp" },
+  { src: G, alt: "Introduction to using Lark system" },
+  { src: G2, alt: "Speaker Reward" },
+  { src: GG, alt: "Project Lark system Reward" },
+  { src: G3, alt: "System speech in Smart Party" },
+  { src: G4, alt: "Replenishment Program Training" },
+ 
 ];
 
 export default function ImageCarousel() {
@@ -85,7 +90,7 @@ export default function ImageCarousel() {
           />
           {/* Main Title Overlay */}
           <div className="absolute inset-x-0 bottom-4 flex justify-center">
-            <div className="text-center text-white text-4xl md:text-6xl font-extrabold uppercase drop-shadow-lg bg-black/40 px-8 py-3 rounded-lg backdrop-blur-sm">
+            <div className="text-center text-white text-xl md:text-2xl font-extrabold uppercase drop-shadow-lg bg-black/40 px-8 py-3 rounded-lg backdrop-blur-sm">
               {currentImage.alt}
             </div>
           </div>
