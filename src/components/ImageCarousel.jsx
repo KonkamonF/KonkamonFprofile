@@ -58,7 +58,7 @@ export default function ImageCarousel() {
 
   return (
     <div
-      className="relative w-full overflow-hidden flex flex-col items-center justify-center p-0 m-0"
+      className="relative w-full overflow-hidden flex flex-col items-center justify-center p-0 m-0 rounded-3xl"
       style={{
         minHeight: "100vh",
         background: `url(${currentBackgroundImage}) no-repeat center center / cover`,

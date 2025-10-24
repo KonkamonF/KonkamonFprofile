@@ -253,14 +253,17 @@ export default function App() {
 
   return (
     <div className=" pt-20 font-sans">
+
       {/* เพิ่ม CSS เพื่อยกเลิกแอนิเมชันเก่า */}
       <style>{NO_ANIMATION_KEYFRAMES}</style>
+              <p className="font-bold text-5xl mb-24 text-center">Skill</p>
 
       {/* ใช้ opacity แบบง่ายๆ แทน Framer Motion */}
       <div
         style={{ opacity: show ? 1 : 0, transition: "opacity 0.9s" }}
         className="p-4 sm:p-8"
       >
+        
         {/*
           ส่วนที่ 1: Semi-Circular Layout (Desktop/Tablet)
         */}
