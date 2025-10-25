@@ -9,7 +9,15 @@ const experiences = [
     details: "Developed and customized Odoo ERP system modules, enhancing business processes and operational efficiency.",
     color: "#FF9800", // Vibrant Orange
     textColor: '#FFFFFF',
-    gradient: 'linear-gradient(135deg, #FF9800 0%, #FF5799 100%)' // Orange Gradient
+    gradient: 'linear-gradient(135deg, #ffa600 0%, #fc6aa3 80%)' // Orange Gradient
+  },
+   {
+    title: "Hospital Customer Service",
+    duration: "1 Year",
+    details: "Provided empathetic and efficient support to patients and visitors, ensuring high satisfaction in a fast-paced environment.",
+    color: "#FFEB3B", // Bright Yellow
+    textColor: '#FFFFFF', // Dark text for contrast on bright yellow
+    gradient: 'linear-gradient(135deg, #77BEF0 0%, #00FF9C 80%)' // Solid Yellow
   },
   {
     title: "Full-Stack Developer",
@@ -17,7 +25,7 @@ const experiences = [
     details: "Built responsive web applications from the ground up, working across front-end (React) and back-end (Node.js/Express).",
     color: "#E91E63", // Vibrant Pink
     textColor: '#FFFFFF',
-    gradient: 'linear-gradient(135deg, #E91E63 0%, #799EFF 100%)' // Pink Gradient
+    gradient: 'linear-gradient(135deg, #E91E63 0%, #799EFF 80%)' // Pink Gradient
   },
   {
     title: "Hospital Customer Service",
@@ -25,16 +33,9 @@ const experiences = [
     details: "Provided empathetic and efficient support to patients and visitors, ensuring high satisfaction in a fast-paced environment.",
     color: "#FFEB3B", // Bright Yellow
     textColor: '#FFFFFF', // Dark text for contrast on bright yellow
-    gradient: 'linear-gradient(135deg, #B4E50D 0%, #FCCD2A 100%)' // Solid Yellow
+    gradient: 'linear-gradient(135deg, #c4fc03 0%, #fce72a 80%)' // Solid Yellow
   },
-  {
-    title: "Hospital Customer Service",
-    duration: "1 Year",
-    details: "Provided empathetic and efficient support to patients and visitors, ensuring high satisfaction in a fast-paced environment.",
-    color: "#FFEB3B", // Bright Yellow
-    textColor: '#FFFFFF', // Dark text for contrast on bright yellow
-    gradient: 'linear-gradient(135deg, #77BEF0 0%, #00FF9C 100%)' // Solid Yellow
-  },
+ 
 ];
 
 // Inline Styles for a uniform, colorful, and attractive look
@@ -44,17 +45,17 @@ const styles = {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    maxWidth: '1200px', // จำกัดความกว้างสูงสุดเพื่อให้การ์ดดูสวยงาม
+    maxWidth: '100%', // จำกัดความกว้างสูงสุดเพื่อให้การ์ดดูสวยงาม
     margin: '0 auto',
     padding: '20px 0',
   },
   experienceCard: {
     // กำหนดความกว้างพื้นฐานของการ์ดเพื่อให้ Responsive
     flex: '1 1 300px', // Grow: 1, Shrink: 1, Basis: 300px
-    maxWidth: '350px', // จำกัดความกว้างสูงสุดต่อการ์ด
+    maxWidth: '400px', // จำกัดความกว้างสูงสุดต่อการ์ด
     
     border: 'none',
-    borderRadius: '20px',
+    borderRadius: '50px',
     padding: '30px',
     minHeight: '320px', // เพิ่มความสูงให้มากขึ้นและเท่ากันทุกการ์ด
     display: 'flex',
@@ -125,7 +126,7 @@ const ExperienceCard = ({ experience }) => {
         {experience.title}
       </h3>
       <p style={styles.cardDuration}>
-        <span role="img" aria-label="duration-icon">⏱️</span> {experience.duration}
+        <span role="img" aria-label="duration-icon"> 🕰 </span> {experience.duration}
       </p>
       <p style={styles.cardDetails}>
         {experience.details}
@@ -137,7 +138,7 @@ const ExperienceCard = ({ experience }) => {
 
 export default function ExperiencesCard() {
   return (
-    <div className="experiences-section-wrapper" style={{ padding: '60px 20px'}}>
+    <div className="experiences-section-wrapper" style={{ padding: '50px 0px'}}>
       <h2 style={styles.header}>
         My Professional Experiences
       </h2>
