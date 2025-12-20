@@ -1,150 +1,93 @@
 import React from 'react';
-// ลบการนำเข้า Swiper เนื่องจากไม่สามารถ Resolve ได้ในสภาพแวดล้อมนี้
-// import { Swiper, SwiperSlide } from 'swiper/react'; 
+import { motion } from 'framer-motion';
 
 const experiences = [
   {
     title: "ERP Odoo System Programmer",
     duration: "1 Year",
     details: "Developed and customized Odoo ERP system modules, enhancing business processes and operational efficiency.",
-    color: "#FF9800", // Vibrant Orange
-    textColor: '#FFFFFF',
-    gradient: 'linear-gradient(135deg, #ffa600 0%, #fc6aa3 80%)' // Orange Gradient
+    category: "Development"
   },
-   {
+  {
     title: "Hospital Customer Service",
     duration: "1 Year",
     details: "Provided empathetic and efficient support to patients and visitors, ensuring high satisfaction in a fast-paced environment.",
-    color: "#FFEB3B", // Bright Yellow
-    textColor: '#FFFFFF', // Dark text for contrast on bright yellow
-    gradient: 'linear-gradient(135deg, #77BEF0 0%, #00FF9C 80%)' // Solid Yellow
+    category: "Service"
   },
   {
     title: "Full-Stack Developer",
     duration: "6 Months",
     details: "Built responsive web applications from the ground up, working across front-end (React) and back-end (Node.js/Express).",
-    color: "#E91E63", // Vibrant Pink
-    textColor: '#FFFFFF',
-    gradient: 'linear-gradient(135deg, #E91E63 0%, #799EFF 80%)' // Pink Gradient
+    category: "Development"
   },
   {
     title: "Hospital Customer Service",
     duration: "1 Year",
     details: "Provided empathetic and efficient support to patients and visitors, ensuring high satisfaction in a fast-paced environment.",
-    color: "#FFEB3B", // Bright Yellow
-    textColor: '#FFFFFF', // Dark text for contrast on bright yellow
-    gradient: 'linear-gradient(135deg, #c4fc03 0%, #fce72a 80%)' // Solid Yellow
+    category: "Service"
   },
- 
 ];
 
-// Inline Styles for a uniform, colorful, and attractive look
-const styles = {
-  // สไตล์สำหรับ container หลัก ที่ทำหน้าที่เป็น Grid/Flexbox
-  experiencesGrid: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    maxWidth: '100%', // จำกัดความกว้างสูงสุดเพื่อให้การ์ดดูสวยงาม
-    margin: '0 auto',
-    padding: '20px 0',
-  },
-  experienceCard: {
-    // กำหนดความกว้างพื้นฐานของการ์ดเพื่อให้ Responsive
-    flex: '1 1 300px', // Grow: 1, Shrink: 1, Basis: 300px
-    maxWidth: '400px', // จำกัดความกว้างสูงสุดต่อการ์ด
-    
-    border: 'none',
-    borderRadius: '50px',
-    padding: '30px',
-    minHeight: '320px', // เพิ่มความสูงให้มากขึ้นและเท่ากันทุกการ์ด
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    boxShadow: '0 10px 25px rgba(0,0,0,0.2)', // เพิ่มเงาให้ดูโดดเด่น
-    transition: 'transform 0.4s ease, box-shadow 0.4s ease',
-    cursor: 'pointer',
-    position: 'relative',
-    overflow: 'hidden',
-    textAlign: 'center', 
-    // เพิ่มเอฟเฟกต์ hover ผ่านการฟัง event ใน React (สำหรับ production ควรใช้ CSS Class)
-    ':hover': {
-        transform: 'translateY(-20px) scale(1.05)',
-        boxShadow: '0 20px 40px rgba(0,0,0,0.3)',
-    }
-  },
-  cardTitle: {
-    margin: '0 0 15px 0',
-    fontSize: '2em',
-    fontWeight: '800',
-    textShadow: '1px 1px 3px rgba(0,0,0,0.1)',
-  },
-  cardDuration: {
-    margin: '0 0 15px 0',
-    fontSize: '1.2em',
-    fontStyle: 'normal',
-    fontWeight: '600',
-    opacity: '0.95',
-  },
-  cardDetails: {
-    margin: 0,
-    fontSize: '1em',
-    lineHeight: '1.6',
-    opacity: '0.9',
-  },
-  header: {
-    textAlign: 'center', 
-    marginBottom: '40px', 
-    color: '#795353', 
-    fontSize: '2.8em', // ขนาดใหญ่ขึ้น
-    fontWeight: 'bold',
-    textTransform: 'uppercase',
-    letterSpacing: '1px'
-  }
-};
-
-// Component สำหรับการ์ดประสบการณ์
-const ExperienceCard = ({ experience }) => {
-  const [isHovered, setIsHovered] = React.useState(false);
-  
-  // ใช้ JavaScript เพื่อจำลอง :hover สำหรับ inline styles
-  const cardStyle = {
-    ...styles.experienceCard,
-    background: experience.gradient, 
-    color: experience.textColor,
-    ...(isHovered && styles.experienceCard[':hover'])
-  };
-
+const ExperienceCard = ({ experience, index }) => {
   return (
-    <div 
-      style={cardStyle}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className="experience-static-card" // Class ไว้เผื่อใช้ CSS ภายนอก
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.1, duration: 0.6 }}
+      whileHover={{ y: -10 }}
+      className="relative flex flex-col p-8 rounded-[2.5rem] bg-white/50 backdrop-blur-md border border-[#D1BB9E]/30 shadow-sm hover:shadow-xl transition-all duration-500 group"
     >
-      <h3 style={styles.cardTitle}>
+      {/* Category Tag */}
+      <span className="text-[10px] uppercase tracking-[0.3em] text-[#9E7676] font-bold mb-4">
+        {experience.category}
+      </span>
+
+      <h3 className="text-2xl font-bold text-[#603F26] leading-tight mb-4 group-hover:text-[#4A3428] transition-colors">
         {experience.title}
       </h3>
-      <p style={styles.cardDuration}>
-        <span role="img" aria-label="duration-icon"> 🕰 </span> {experience.duration}
-      </p>
-      <p style={styles.cardDetails}>
+
+      <div className="flex items-center gap-2 mb-6">
+        <div className="h-[1px] w-4 bg-[#D1BB9E]"></div>
+        <span className="text-sm font-semibold text-[#795353] italic">
+          {experience.duration}
+        </span>
+      </div>
+
+      <p className="text-[#795353]/80 leading-relaxed text-sm font-light">
         {experience.details}
       </p>
-    </div>
+
+      {/* Subtle background decoration */}
+      <div className="absolute -bottom-2 -right-2 text-6xl opacity-[0.03] font-bold pointer-events-none select-none">
+        0{index + 1}
+      </div>
+    </motion.div>
   );
 };
 
-
 export default function ExperiencesCard() {
   return (
-    <div className="experiences-section-wrapper" style={{ padding: '50px 0px'}}>
-      <h2 style={styles.header}>
-        My Professional Experiences
-      </h2>
-      <div style={styles.experiencesGrid}>
-        {experiences.map((experience, index) => (
-          <ExperienceCard key={index} experience={experience} />
+    <div className="py-24 px-6 max-w-7xl mx-auto">
+      {/* Minimal Header */}
+      <div className="text-center mb-16">
+        <motion.h2 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          className="text-sm uppercase tracking-[0.5em] text-[#9E7676] font-medium mb-3"
+        >
+          Career Path
+        </motion.h2>
+        <h1 className="text-3xl md:text-4xl font-light text-[#603F26]">
+          Professional <span className="font-bold">Journey</span>
+        </h1>
+        <div className="h-[1px] w-12 bg-[#D1BB9E] mx-auto mt-6"></div>
+      </div>
+
+      {/* Grid Layout */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {experiences.map((exp, index) => (
+          <ExperienceCard key={index} experience={exp} index={index} />
         ))}
       </div>
     </div>

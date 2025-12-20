@@ -7,109 +7,108 @@ import { motion } from "framer-motion";
 export default function Education() {
   const [show, setShow] = useState(false);
 
-  // *ฟังก์ชันจัดการการเลื่อนหน้าจอ (Scrolling)
   const handleScroll = () => {
-    // กำหนดให้แสดงเนื้อหาเมื่อเลื่อนลงมาเกิน 500px
     const scrollY = window.scrollY;
-    if (scrollY > 500) {
-      setShow(true);
-    } else {
-      setShow(false);
-    }
+    setShow(scrollY > 400);
   };
 
-  // *Effect สำหรับการเพิ่มและลบ Event Listener สำหรับการเลื่อนหน้าจอ
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const educationData = [
+    {
+      img: utcc,
+      year: "2025 - 2026",
+      degree: "Master of Engineering",
+      major: "Computer Engineering and Financial Technology",
+      place: "University of the Thai Chamber of Commerce",
+    },
+    {
+      img: University,
+      year: "2013 - 2018",
+      degree: "Bachelor Degree",
+      major: "Business English",
+      place: "Assumption University",
+    },
+    {
+      img: code,
+      year: "2024",
+      degree: "Certificate",
+      major: "Software Park CodeCamp #18",
+      place: "Full-Stack JavaScript Developer",
+    },
+  ];
+
   return (
-    <>
+    <section className="py-20">
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: show ? 1 : 0 }}
-        transition={{ duration: 0.9 }}
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: show ? 1 : 0, y: show ? 0 : 30 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <div className="text-center font-bold text-4xl sm:text-5xl mx-auto py-8 mb-12">
-          Education 🎓
+        {/* Title: Minimal Style */}
+        <div className="text-center mb-20">
+          <h2 className="text-sm uppercase tracking-[0.5em] text-[#9E7676] font-medium mb-2">
+            Learning Path
+          </h2>
+          <div className="text-4xl md:text-5xl font-light text-[#603F26]">
+            Edu<span className="font-bold">cation</span>
+          </div>
+          <div className="h-[1px] w-12 bg-[#D1BB9E] mx-auto mt-6"></div>
         </div>
 
-        {/*
-          การปรับ Responsive:
-          - flex-col: เป็นค่าเริ่มต้น (หน้าจอมือถือ) ให้อยู่ในแนวตั้ง
-          - sm:flex-row: เมื่อหน้าจอขนาด 'sm' (640px) ขึ้นไป ให้เปลี่ยนเป็นแนวนอน
-          - gap-8: ระยะห่างในทุกขนาด
-          - sm:gap-36: เพิ่มระยะห่างเป็น 36 เมื่อหน้าจอขนาด 'sm' ขึ้นไป
-        */}
-        <div className="flex items-center justify-center gap-8 sm:gap-36 flex-col sm:flex-row sm:items-start">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: show ? 1 : 0 }}
-            transition={{ duration: 0.9 }}
-            className="mb-8 sm:mb-0" // เพิ่มระยะห่างด้านล่างสำหรับหน้าจอเล็ก
-          >
-            <div className="flex flex-col items-center">
-              {" "}
-              {/* จัดให้อยู่ตรงกลางในแนวตั้ง */}
-              <img
-                src={utcc}
-                alt="University of the Thai Chamber of Commerce"
-                className="w-[180px] sm:w-[200px] mb-2 hover:scale-105" // ปรับขนาดภาพเล็กน้อยสำหรับ responsive
-              />
-              <div className="font-semibold w-[280px] sm:w-[250px] text-base sm:text-lg text-center">
-                2025-2026 <br /> Master of Engineering (Computer Engineering and
-                Financial Technology) at University of the Thai Chamber of
-                Commerce
+        {/* Education Grid */}
+        <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8">
+          {educationData.map((edu, index) => (
+            <motion.div
+              key={index}
+              whileHover={{ y: -10 }}
+              className="flex flex-col items-center group"
+            >
+              {/* Image Container with Soft Glow */}
+              <div className="relative mb-8">
+                {/* แสง Glow ด้านหลังเมื่อ Hover */}
+                <div className="absolute inset-0 bg-[#D1BB9E] rounded-full blur-2xl opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
+                
+                <img
+                  src={edu.img}
+                  alt={edu.place}
+                  /* เปลี่ยนจาก grayscale เป็น opacity-60 (สว่างเห็นสีจางๆ) 
+                    และเมื่อ hover จะเป็น opacity-100 (สีชัดเจน) 
+                  */
+                  className="relative w-32 h-32 md:w-40 md:h-40 object-contain grayscale-[0.7] group-hover:grayscale-0 transition-all duration-500"
+                />
               </div>
-            </div>
-          </motion.div>
-          {/* ส่วนที่ 1: มหาวิทยาลัย */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: show ? 1 : 0 }}
-            transition={{ duration: 0.9 }}
-            className="mb-8 sm:mb-0" // เพิ่มระยะห่างด้านล่างสำหรับหน้าจอเล็ก
-          >
-            <div className="flex flex-col items-center">
-              {" "}
-              {/* จัดให้อยู่ตรงกลางในแนวตั้ง */}
-              <img
-                src={University}
-                alt="Assumption University"
-                className="w-[180px] sm:w-[200px] mb-2 hover:scale-105" // ปรับขนาดภาพเล็กน้อยสำหรับ responsive
-              />
-              <div className="font-semibold w-[280px] sm:w-[200px] text-base sm:text-lg text-center">
-                2013-2018 <br /> Bachelor degree in Business English at
-                Assumption University
-              </div>
-            </div>
-          </motion.div>
 
-          {/* ส่วนที่ 2: CodeCamp */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: show ? 1 : 0 }}
-            transition={{ duration: 0.9 }}
-          >
-            <div className="flex flex-col items-center">
-              {" "}
-              {/* จัดให้อยู่ตรงกลางในแนวตั้ง */}
-              <img
-                src={code}
-                alt="Software Park CodeCamp"
-                className="w-[180px] sm:w-[200px] mb-2 hover:scale-105" // ปรับขนาดภาพเล็กน้อยสำหรับ responsive
-              />
-              <div className="font-semibold w-[280px] sm:w-[200px] text-base sm:text-lg text-center">
-                2024
-                <br />
-                Certificate Software Park CodeCamp #18 Full-Stack JavaScript
-                Developer
+              {/* Text Info */}
+              <div className="text-center space-y-2">
+                <span className="text-xs font-bold tracking-widest text-[#9E7676] bg-[#D1BB9E]/20 px-3 py-1 rounded-full">
+                  {edu.year}
+                </span>
+                
+                <h3 className="text-lg font-bold text-[#603F26] mt-4 leading-tight">
+                  {edu.degree}
+                </h3>
+                
+                <p className="text-[#795353] font-medium text-sm md:text-base px-4">
+                  {edu.major}
+                </p>
+                
+                <p className="text-[#9E7676] text-xs uppercase tracking-wider mt-2 font-light">
+                  {edu.place}
+                </p>
               </div>
-            </div>
-          </motion.div>
+
+              {/* Minimalist Divider for mobile */}
+              {index !== educationData.length - 1 && (
+                <div className="w-px h-12 bg-gradient-to-b from-[#D1BB9E] to-transparent mt-12 md:hidden"></div>
+              )}
+            </motion.div>
+          ))}
         </div>
       </motion.div>
-    </>
+    </section>
   );
 }

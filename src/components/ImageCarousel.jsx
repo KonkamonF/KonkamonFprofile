@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-// Assuming the path to your assets is correct
+import { motion, AnimatePresence } from "framer-motion";
+
+// Assets
 import G from "../assets/G.jpg";
 import G1 from "../assets/G1.jpg";
 import G2 from "../assets/G2.jpg";
@@ -7,7 +9,6 @@ import H from "../assets/H.jpg";
 import G3 from "../assets/G3.jpg";
 import G4 from "../assets/G4.jpg";
 import GG from "../assets/GG.jpg";
-
 
 const images = [
   { src: H, alt: "Customer Service Hospital" },
@@ -17,152 +18,108 @@ const images = [
   { src: GG, alt: "Project Lark system Reward" },
   { src: G3, alt: "System speech in Smart Party" },
   { src: G4, alt: "Replenishment Program Training" },
- 
 ];
 
 export default function ImageCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Looping logic for navigation
   const goToPrev = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    );
+    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
   };
 
   const goToNext = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
-    );
+    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   };
 
-  const goToSlide = (index) => {
-    setCurrentIndex(index);
-  };
-
-  // --- Auto-play Logic using useEffect ---
-  // The logic remains the same, ensuring auto-play works
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      // Automatically advance to the next slide every 3 seconds
-      goToNext();
-    }, 3000); // 3000ms = 3 seconds
-
-    // Cleanup function: clears the interval when the component unmounts or re-renders
+    const intervalId = setInterval(goToNext, 5000); // 5 วินาทีเพื่อให้คนได้อ่านแคปชัน
     return () => clearInterval(intervalId);
-  }, [currentIndex]); // Re-run effect when currentIndex changes to reset the timer
+  }, [currentIndex]);
 
-  // Get the current main image's source for the background
   const currentImage = images[currentIndex];
-  const currentBackgroundImage = currentImage.src;
 
   return (
-    <div
-      className="relative w-full overflow-hidden flex flex-col items-center justify-center p-0 m-0 rounded-3xl h-48"
-      style={{
-        minHeight: "100vh",
-        background: `url(${currentBackgroundImage}) no-repeat center center / cover`,
-        transition: "background-image 0.7s ease-in-out",
-      }}
-    >
-      {/* Overlay for blur and darken effect */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          backdropFilter: "blur(2px)",
-          backgroundColor: "rgba(0, 0, 0, 0.2)",
-        }}
-      ></div>
+    <div className="w-full py-20 px-4 flex flex-col items-center bg-transparent">
+      
+      {/* Container หลัก */}
+      <div className="w-full max-w-5xl">
+        
+        {/* 1. Main Display Area */}
+        <div className="relative group overflow-hidden rounded-[2.5rem] shadow-2xl bg-white aspect-[16/9] md:aspect-[21/9]">
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={currentIndex}
+              src={currentImage.src}
+              alt={currentImage.alt}
+              initial={{ opacity: 0, scale: 1.1 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          </AnimatePresence>
 
-      {/* Main Content Container (relative to the background) */}
-      <div className="relative w-full max-w-[1200px] mx-auto z-10 py-10 flex flex-col items-center">
-        {/*
-        ########################################
-        # 1. NEW: Static Main Image Display #
-        ########################################
-        */}
-        <div className="w-full max-w-[800px] mb-8 relative">
-          <img
-            src={currentImage.src}
-            alt={currentImage.alt}
-            className="w-full h-auto object-cover rounded-xl shadow-2xl transition-opacity duration-700"
-            style={{ aspectRatio: "16/9" }} // A common aspect ratio for a main display
-          />
-          {/* Main Title Overlay */}
-          <div className="absolute inset-x-0 bottom-4 flex justify-center">
-            <div className="text-center text-white text-xl md:text-2xl font-extrabold uppercase drop-shadow-lg bg-black/40 px-8 py-3 rounded-lg backdrop-blur-sm">
-              {currentImage.alt}
-            </div>
+          {/* Overlay แคปชันแบบ Minimal */}
+          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-8 md:p-12">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              key={currentImage.alt}
+              className="text-white"
+            >
+              <p className="text-[10px] uppercase tracking-[0.4em] mb-2 text-white/70 font-medium">Activity Spotlight</p>
+              <h3 className="text-xl md:text-2xl font-bold tracking-tight">{currentImage.alt}</h3>
+            </motion.div>
           </div>
-        </div>
 
-        <div className="relative w-full overflow-hidden max-w-[1000px] mt-4">
+          {/* Navigation Buttons (โผล่ตอน Hover) */}
           <button
             onClick={goToPrev}
-            className="
-      absolute left-2 top-1/2 -translate-y-1/2
-      bg-gray-800 bg-opacity-50 text-white
-      p-2 rounded-full shadow-md
-      hover:bg-opacity-80 transition
-      z-20
-    "
+            className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white opacity-0 group-hover:opacity-100 transition-all hover:bg-white hover:text-[#603F26]"
           >
-            &lt;
+            ←
           </button>
-
           <button
             onClick={goToNext}
-            className="
-      absolute right-2 top-1/2 -translate-y-1/2
-      bg-gray-800 bg-opacity-50 text-white
-      p-2 rounded-full shadow-md
-      hover:bg-opacity-80 transition
-      z-20
-    "
+            className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white opacity-0 group-hover:opacity-100 transition-all hover:bg-white hover:text-[#603F26]"
           >
-            &gt;
+            →
           </button>
+        </div>
 
-          {/* Carousel Track for Thumbnails */}
-          <div
-            className="flex transition-transform duration-500 ease-in-out"
-            style={{
-              // Show about 7 thumbnails at a time (100% / 7 = ~14.28%)
-              transform: `translateX(calc(-${currentIndex * 14.28}% + 42.84%))`, // Centers the current item (14.28 * 3 = 42.84)
-            }}
-          >
-            {images.map((image, index) => {
-              const isCenter = index === currentIndex;
-
-              return (
-                <div
-                  key={index}
-                  onClick={() => goToSlide(index)} // Click to select the main image
-                  className={`flex-none w-[14.28%] p-2 cursor-pointer transition-all duration-300 ease-in-out transform ${
-                    isCenter ? "scale-110 opacity-100" : "scale-95 opacity-60"
-                  }`}
-                  style={{
-                    minWidth: "14.28%", // Ensure 7 items fit
-                    zIndex: isCenter ? 10 : 1,
-                    // Highlight border for the active/selected thumbnail
-                    border: isCenter
-                      ? "4px solid white"
-                      : "4px solid transparent",
-                    borderRadius: "2px",
-                  }}
-                >
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    className="w-full h-full object-cover rounded-lg shadow-lg"
-                    style={{ aspectRatio: "4/3" }} // Standard thumbnail aspect ratio
+        {/* 2. Thumbnail Track */}
+        <div className="mt-8 flex justify-center gap-3 overflow-x-auto py-4 scrollbar-hide no-scrollbar">
+          {images.map((image, index) => {
+            const isActive = index === currentIndex;
+            return (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`relative flex-none transition-all duration-500 rounded-2xl overflow-hidden ${
+                  isActive ? "w-24 md:w-32 shadow-lg" : "w-12 md:w-16 opacity-40 grayscale hover:opacity-100 hover:grayscale-0"
+                }`}
+              >
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="w-full aspect-square object-cover"
+                />
+                {isActive && (
+                  <motion.div 
+                    layoutId="active-border"
+                    className="absolute inset-0 border-2 border-[#D1BB9E] rounded-2xl"
                   />
-                </div>
-              );
-            })}
-          </div>
+                )}
+              </button>
+            );
+          })}
         </div>
       </div>
+
+      <style jsx>{`
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+      `}</style>
     </div>
   );
 }
