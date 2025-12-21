@@ -28,17 +28,48 @@ export default function Experiences() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const hotelStack = ["Javascript", "Node.JS", "React", "Zustand", "Stripe", "MySQL", "Tailwind"];
-  const selfStack = ["Javascript", "Node.JS", "React", "JWT", "Axios", "Express.js", "MySQL", "Tailwind"];
+  const hotelStack = [
+    "Javascript",
+    "Node.JS",
+    "React",
+    "Zustand",
+    "Stripe",
+    "MySQL",
+    "Tailwind",
+  ];
+  const selfStack = [
+    "Javascript",
+    "Node.JS",
+    "React",
+    "JWT",
+    "Axios",
+    "Express.js",
+    "MySQL",
+    "Tailwind",
+  ];
 
-  const ProjectCard = ({ title, video, githubClient, githubServer, website, description, stack, id }) => (
+  const ProjectCard = ({
+    title,
+    video,
+    githubClient,
+    githubServer,
+    website,
+    description,
+    stack,
+    id,
+  }) => (
     <div className="w-full md:w-[48%] bg-white/40 backdrop-blur-md rounded-[2.5rem] p-6 md:p-8 border border-white/50 shadow-sm hover:shadow-xl transition-all duration-500 group">
       {/* Video Preview */}
-      <div 
+      <div
         onClick={() => setFullscreenVideo(id)}
         className="relative overflow-hidden rounded-[2rem] bg-[#603F26] aspect-video mb-8 shadow-inner cursor-zoom-in group-hover:shadow-2xl transition-all duration-500"
       >
-        <video autoPlay loop muted className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+        <video
+          autoPlay
+          loop
+          muted
+          className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+        >
           <source src={video} type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all flex items-center justify-center">
@@ -47,21 +78,35 @@ export default function Experiences() {
       </div>
 
       <div className="space-y-6">
-        <h3 className="text-2xl font-bold text-[#603F26] tracking-tight">{title}</h3>
-        
+        <h3 className="text-2xl font-bold text-[#603F26] tracking-tight">
+          {title}
+        </h3>
+
         {/* Buttons Section */}
         <div className="flex flex-wrap gap-3 justify-center md:justify-start">
-          <a href={website} target="_blank" rel="noreferrer" 
-             className="px-6 py-2 bg-[#603F26] text-white rounded-full text-sm font-medium hover:bg-[#4A3428] transition-colors shadow-lg">
+          <a
+            href={website}
+            target="_blank"
+            rel="noreferrer"
+            className="px-6 py-2 bg-[#603F26] text-white rounded-full text-sm font-medium hover:bg-[#4A3428] transition-colors shadow-lg"
+          >
             Visit Website
           </a>
           <div className="flex gap-2">
-            <a href={githubClient} target="_blank" rel="noreferrer" 
-               className="p-2 border border-[#D1BB9E] text-[#603F26] rounded-full hover:bg-[#D1BB9E]/20 transition-all shadow-sm">
+            <a
+              href={githubClient}
+              target="_blank"
+              rel="noreferrer"
+              className="p-2 border border-[#D1BB9E] text-[#603F26] rounded-full hover:bg-[#D1BB9E]/20 transition-all shadow-sm"
+            >
               <AiFillGithub size={20} />
             </a>
-            <a href={githubServer} target="_blank" rel="noreferrer" 
-               className="p-2 border border-[#D1BB9E] text-[#603F26] rounded-full hover:bg-[#D1BB9E]/20 transition-all shadow-sm">
+            <a
+              href={githubServer}
+              target="_blank"
+              rel="noreferrer"
+              className="p-2 border border-[#D1BB9E] text-[#603F26] rounded-full hover:bg-[#D1BB9E]/20 transition-all shadow-sm"
+            >
               <AiFillGithub size={20} />
             </a>
           </div>
@@ -69,7 +114,9 @@ export default function Experiences() {
 
         {/* Stack Slider: Minimal Style */}
         <div className="py-4 border-y border-[#D1BB9E]/20">
-          <p className="text-[10px] uppercase tracking-[0.3em] text-[#9E7676] mb-3 font-bold text-center md:text-left">Tech Stack</p>
+          <p className="text-[10px] uppercase tracking-[0.3em] text-[#9E7676] mb-3 font-bold text-center md:text-left">
+            Tech Stack
+          </p>
           <Swiper
             modules={[Autoplay]}
             autoplay={{ delay: 1500 }}
@@ -100,8 +147,10 @@ export default function Experiences() {
         transition={{ duration: 0.8 }}
       >
         {/* Header Section */}
-        <div className="text-center mb-20">
-          <span className="text-sm uppercase tracking-[0.5em] text-[#9E7676] font-medium">Selected Works</span>
+        <div className="text-center mb-16">
+          <span className="text-sm uppercase tracking-[0.5em] text-[#9E7676] font-medium">
+            Selected Works
+          </span>
           <h1 className="text-4xl md:text-5xl font-light text-[#603F26] mt-2">
             Expe<span className="font-bold">riences</span>
           </h1>
@@ -110,9 +159,9 @@ export default function Experiences() {
 
         {/* Projects Layout */}
         <div className="flex flex-col md:flex-row justify-between items-stretch gap-10 mb-32">
-          <ProjectCard 
+          <ProjectCard
             id="Hotel"
-            title="Group Project: Hotel Book"
+            title="Group Project Hotel Booking System"
             video={Hotel}
             website="https://hotel-book-client.onrender.com/"
             githubClient="https://github.com/NuttavichBig/CC18-GroupProject-Client.git"
@@ -120,9 +169,9 @@ export default function Experiences() {
             stack={hotelStack}
             description="Focused on creating a user-friendly web application for booking hotels with secure payment and membership benefits."
           />
-          <ProjectCard 
+          <ProjectCard
             id="Self"
-            title="Self-Project: ShutterRoller"
+            title="Self-Project ShutterRoller System"
             video={Selfproject}
             website="https://shutterroller.onrender.com/"
             githubClient="https://github.com/KonkamonF/ShutterRollerFront.git"
@@ -135,14 +184,21 @@ export default function Experiences() {
         {/* Fullscreen Video Portal (Simulated) */}
         {fullscreenVideo && (
           <div className="fixed inset-0 z-[100] bg-[#603F26]/95 backdrop-blur-xl flex items-center justify-center p-4 md:p-10">
-            <button 
+            <button
               onClick={() => setFullscreenVideo(null)}
               className="absolute top-8 right-8 text-white/50 hover:text-white transition-all text-xl uppercase tracking-widest font-bold"
             >
-              Close [x]
+              [x]
             </button>
-            <video autoPlay controls className="max-w-full max-h-full rounded-2xl shadow-2xl">
-              <source src={fullscreenVideo === "Hotel" ? Hotel : Selfproject} type="video/mp4" />
+            <video
+              autoPlay
+              controls
+              className="max-w-full max-h-full rounded-2xl shadow-2xl"
+            >
+              <source
+                src={fullscreenVideo === "Hotel" ? Hotel : Selfproject}
+                type="video/mp4"
+              />
             </video>
           </div>
         )}
@@ -153,11 +209,22 @@ export default function Experiences() {
         <div className="mt-32 text-center max-w-3xl mx-auto space-y-10">
           <ImageCarousel />
           <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-[#603F26]">Personal Journey</h2>
+            <h2 className="text-2xl font-bold text-[#603F26]">
+              Personal Journey
+            </h2>
             <p className="text-lg leading-relaxed text-[#795353] font-light italic">
-              "After six years in customer service, I am transitioning into software development. 
-              My background has equipped me with <span className="text-[#603F26] font-bold">problem-solving and collaboration skills</span>. 
-              My goal is to deliver applications that are both functional and visually captivating."
+              "After gaining experience in customer service, I discovered my
+              passion for technology and transitioned into the IT field by
+              attending coding bootcamps and pursuing a Master’s degree in
+              Engineering Computer Engineering and Financial Technology. I have
+              developed real-world projects as a{" "}
+              <span className="text-[#603F26] font-bold">
+                Full Stack Developer
+              </span>
+              , utilizing tools such as n8n for workflow automation, Diffy
+              chatbot, and relational databases including MSSQL, MySQL
+              Workbench, and PostgreSQL. I am committed to creating efficient,
+              modern, and impactful software solutions."
             </p>
           </div>
         </div>

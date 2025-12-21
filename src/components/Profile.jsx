@@ -27,11 +27,11 @@ export default function Profile() {
           transition={{ duration: 0.8 }}
           className="relative"
         >
-          <div className="absolute -inset-1 bg-gradient-to-r from-[#D1BB9E] to-[#EAD8C0] rounded-full blur opacity-25"></div>
+          <div className="absolute -inset-1 bg-gradient-to-b from-[#ff9f22] to-[#ffe1b9] rounded-full blur opacity-25"></div>
           <img
             src={a1}
             alt="Profile"
-            className="relative w-48 h-48 md:w-64 md:h-64 object-cover rounded-full shadow-2xl border-4 border-white hover:scale-110 transition-transform"
+            className="relative w-[200px] h-[200px] md:w-[300px] md:h-[300px] object-cover rounded-full shadow-2xl border-4 border-white hover:scale-110 transition-transform"
           />
         </motion.div>
       </div>
@@ -43,11 +43,11 @@ export default function Profile() {
           animate={{ opacity: 1 }}
           className="text-sm uppercase tracking-[0.4em] text-[#9E7676] font-medium"
         >
-          Personal Portfolio
+          Personal
         </motion.h2>
         
         <h1 className="text-4xl md:text-6xl font-light tracking-tight">
-          Konakmon <span className="font-bold text-[#603F26]">Fungsuk</span>
+          Konkamon <span className="font-bold text-[#603F26]">FUNGSUK</span>
         </h1>
         
         <div className="flex items-center justify-center gap-3 text-xl md:text-2xl text-[#795353]/80 italic font-light">
@@ -67,8 +67,8 @@ export default function Profile() {
           rel="noopener noreferrer"
           className="group flex items-center gap-3 px-6 py-2 rounded-full border border-[#D1BB9E] text-[#603F26] transition-all hover:bg-[#603F26] hover:text-white hover:shadow-lg"
         >
-          <span className="text-sm font-semibold tracking-wide">VIEW GITHUB</span>
           <AiFillGithub className="text-2xl" />
+          <span className="text-sm font-semibold tracking-wide">VIEW GITHUB</span>
         </motion.a>
       </div>
 

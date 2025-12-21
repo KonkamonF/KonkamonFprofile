@@ -52,7 +52,7 @@ export default function Skills() {
   const center = { x: radius * 1.5, y: radius * 1.1 };
 
   return (
-    <section className="py-24 overflow-hidden bg-transparent font-sans">
+    <section className="pt-20 overflow-hidden bg-transparent font-sans">
       {/* Title Section */}
       <div className="text-center mb-16">
         <motion.h2 
@@ -69,7 +69,7 @@ export default function Skills() {
       </div>
 
       {/* Desktop Semi-Circle Layout */}
-      <div className="hidden md:flex justify-center items-center min-h-[450px] relative">
+      <div className="hidden md:flex justify-center items-center min-h-[400px] relative">
         <div 
           className="relative"
           style={{ width: `${radius * 3}px`, height: `${radius * 1.5}px` }}
@@ -101,7 +101,7 @@ export default function Skills() {
               >
                 <div className="relative flex flex-col items-center group">
                   <div className="w-20 h-20 bg-white/80 backdrop-blur-md rounded-2xl shadow-sm border border-[#D1BB9E]/30 p-4 flex items-center justify-center transition-all duration-300 group-hover:shadow-xl group-hover:border-[#603F26]/50">
-                    <img src={skill.src} alt={skill.label} className="w-full h-full object-contain grayscale-[0.5] group-hover:grayscale-0 transition-all" />
+                    <img src={skill.src} alt={skill.label} className="w-full h-full object-contain grayscale-[0.8] group-hover:grayscale-0 transition-all" />
                   </div>
                   {/* Tooltip Label */}
                   <span className="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-xs font-bold text-[#603F26] uppercase tracking-tighter">
@@ -115,14 +115,14 @@ export default function Skills() {
       </div>
 
       {/* Mobile Grid Layout */}
-      <div className="md:hidden px-6">
-        <div className="grid grid-cols-3 gap-6">
+      <div className="md:hidden px-8">
+        <div className="grid grid-cols-4 gap-6">
           {skills.map((skill, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ delay: index * 0.2, duration: 0.3 }}
               className="flex flex-col items-center gap-2"
             >
               <div className="w-16 h-16 bg-white rounded-xl shadow-sm border border-[#D1BB9E]/20 p-3">
@@ -134,10 +134,10 @@ export default function Skills() {
         </div>
       </div>
 
-      {/* ส่วน TextSkill ด้านล่าง */}
+      {/* ส่วน TextSkill ด้านล่าง
       <div className="mt-20">
         <TextSkill />
-      </div>
+      </div> */}
     </section>
   );
 }
