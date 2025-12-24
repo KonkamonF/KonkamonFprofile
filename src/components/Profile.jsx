@@ -36,7 +36,7 @@ export default function Profile() {
       </div>
 
       {/* หัวข้อและชื่อ - ปรับ Typography ให้ Minimal */}
-      <div className="text-center space-y-4 mb-10">
+      <div className="text-center space-y-4 mb-16">
         <motion.h2
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -84,15 +84,15 @@ export default function Profile() {
       >
         <div className="relative p-8 border-y border-[#D1BB9E]/30">
           <p className="text-lg leading-relaxed font-light text-[#4A3428]/90">
-            "Full Stack Developer experienced in building end-to-end web
+            Full Stack Developer experienced in building end-to-end web
             applications, from user interface design to backend architecture and
-            deployment. Skilled in API development, database language Knowledge, and system
-            integration, with a strong passion for continuous learning and
-            adopting modern technologies to enhance system performance."
+            deployment. Skilled in API development, database language Knowledge,
+            and system integration, with a strong passion for continuous
+            learning and adopting modern technologies to enhance system
+            performance.
           </p>
         </div>
       </motion.div>
-
     </section>
   );
 }

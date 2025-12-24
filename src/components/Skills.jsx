@@ -58,7 +58,7 @@ export default function Skills() {
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="text-sm uppercase tracking-[0.5em] text-[#9E7676] font-medium mb-4"
+          className="text-sm uppercase tracking-[0.5em] text-[#9E7676]mb-4"
         >
           Expertise
         </motion.h2>

@@ -28,48 +28,27 @@ export default function Experiences() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const hotelStack = [
-    "Javascript",
-    "Node.JS",
-    "React",
-    "Zustand",
-    "Stripe",
-    "MySQL",
-    "Tailwind",
-  ];
-  const selfStack = [
-    "Javascript",
-    "Node.JS",
-    "React",
-    "JWT",
-    "Axios",
-    "Express.js",
-    "MySQL",
-    "Tailwind",
-  ];
+  // กำหนด Variants เพื่อให้ใช้กับ Title และ Content
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: 0.8, ease: "easeOut" } 
+    },
+  };
 
-  const ProjectCard = ({
-    title,
-    video,
-    githubClient,
-    githubServer,
-    website,
-    description,
-    stack,
-    id,
-  }) => (
+  const hotelStack = ["Javascript", "Node.JS", "React", "Zustand", "Stripe", "MySQL", "Tailwind"];
+  const selfStack = ["Javascript", "Node.JS", "React", "JWT", "Axios", "Express.js", "MySQL", "Tailwind"];
+
+  const ProjectCard = ({ title, video, githubClient, githubServer, website, description, stack, id }) => (
     <div className="w-full md:w-[48%] bg-white/40 backdrop-blur-md rounded-[2.5rem] p-6 md:p-8 border border-white/50 shadow-sm hover:shadow-xl transition-all duration-500 group">
       {/* Video Preview */}
       <div
         onClick={() => setFullscreenVideo(id)}
         className="relative overflow-hidden rounded-[2rem] bg-[#603F26] aspect-video mb-8 shadow-inner cursor-zoom-in group-hover:shadow-2xl transition-all duration-500"
       >
-        <video
-          autoPlay
-          loop
-          muted
-          className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
-        >
+        <video autoPlay loop muted className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
           <source src={video} type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all flex items-center justify-center">
@@ -78,68 +57,30 @@ export default function Experiences() {
       </div>
 
       <div className="space-y-6">
-        <h3 className="text-2xl font-bold text-[#603F26] tracking-tight">
-          {title}
-        </h3>
-
-        {/* Buttons Section */}
+        <h3 className="text-2xl font-bold text-[#603F26] tracking-tight">{title}</h3>
         <div className="flex flex-wrap gap-3 justify-center md:justify-start">
-          <a
-            href={website}
-            target="_blank"
-            rel="noreferrer"
-            className="px-6 py-2 bg-[#603F26] text-white rounded-full text-sm font-medium hover:bg-[#4A3428] transition-colors shadow-lg"
-          >
+          <a href={website} target="_blank" rel="noreferrer" className="px-6 py-2 bg-[#603F26] text-white rounded-full text-sm font-medium hover:bg-[#4A3428] transition-colors shadow-lg">
             Visit Website
           </a>
           <div className="flex gap-3">
-            {/* Front-end Button */}
-            <a
-              href={githubClient}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-2 px-4 py-2 border border-[#D1BB9E] text-[#603F26] rounded-full hover:bg-[#D1BB9E]/20 transition-all shadow-sm"
-            >
-              <AiFillGithub size={20} />
-              <span className="text-sm font-medium">Front-end</span>
+            <a href={githubClient} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-4 py-2 border border-[#D1BB9E] text-[#603F26] rounded-full hover:bg-[#D1BB9E]/20 transition-all shadow-sm">
+              <AiFillGithub size={20} /> <span className="text-sm font-medium">Front-end</span>
             </a>
-
-            {/* Back-end Button */}
-            <a
-              href={githubServer}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-2 px-4 py-2 border border-[#D1BB9E] text-[#603F26] rounded-full hover:bg-[#D1BB9E]/20 transition-all shadow-sm"
-            >
-              <AiFillGithub size={20} />
-              <span className="text-sm font-medium">Back-end</span>
+            <a href={githubServer} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-4 py-2 border border-[#D1BB9E] text-[#603F26] rounded-full hover:bg-[#D1BB9E]/20 transition-all shadow-sm">
+              <AiFillGithub size={20} /> <span className="text-sm font-medium">Back-end</span>
             </a>
           </div>
         </div>
 
-        {/* Stack Slider: Minimal Style */}
         <div className="py-4 border-y border-[#D1BB9E]/20">
-          <p className="text-[10px] uppercase tracking-[0.3em] text-[#9E7676] mb-3 font-bold text-center md:text-left">
-            Tech Stack
-          </p>
-          <Swiper
-            modules={[Autoplay]}
-            autoplay={{ delay: 1500 }}
-            loop={true}
-            slidesPerView={3}
-            className="w-full"
-          >
+          <p className="text-[10px] uppercase tracking-[0.3em] text-[#9E7676] mb-3 font-bold text-center md:text-left">Tech Stack</p>
+          <Swiper modules={[Autoplay]} autoplay={{ delay: 1500 }} loop={true} slidesPerView={3} className="w-full">
             {stack.map((s, i) => (
-              <SwiperSlide key={i}>
-                <span className="text-xs font-medium text-[#795353]">{s}</span>
-              </SwiperSlide>
+              <SwiperSlide key={i}><span className="text-xs font-medium text-[#795353]">{s}</span></SwiperSlide>
             ))}
           </Swiper>
         </div>
-
-        <p className="text-sm leading-relaxed text-[#795353]/90 text-left font-light">
-          {description}
-        </p>
+        <p className="text-sm leading-relaxed text-[#795353]/90 text-left font-light">{description}</p>
       </div>
     </div>
   );
@@ -147,23 +88,33 @@ export default function Experiences() {
   return (
     <section className="py-24 px-6 max-w-7xl mx-auto">
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={show ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.8 }}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
       >
-        {/* Header Section */}
-        <div className="text-center mb-16">
-          <span className="text-sm uppercase tracking-[0.5em] text-[#9E7676] font-medium">
+        {/* Title Section - ปรับให้เหมือนหน้า Skills เป๊ะๆ */}
+        <motion.div variants={itemVariants} className="text-center mb-16">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-sm uppercase tracking-[0.5em] text-[#9E7676] mb-4 font-medium"
+          >
             Selected Works
-          </span>
-          <h1 className="text-4xl md:text-5xl font-light text-[#603F26] mt-2">
-            Expe<span className="font-bold">riences</span>
+          </motion.h2>
+
+          <h1 className="text-4xl md:text-5xl font-light text-[#603F26]">
+            Works <span className="font-bold">Experiences</span>
           </h1>
+
           <div className="h-[1px] w-12 bg-[#D1BB9E] mx-auto mt-6"></div>
-        </div>
+        </motion.div>
 
         {/* Projects Layout */}
-        <div className="flex flex-col md:flex-row justify-between items-stretch gap-10 mb-32">
+        <motion.div 
+          variants={itemVariants}
+          className="flex flex-col md:flex-row justify-between items-stretch gap-10 mb-32"
+        >
           <ProjectCard
             id="Hotel"
             title="Group Project Hotel Booking System"
@@ -184,9 +135,9 @@ export default function Experiences() {
             stack={selfStack}
             description="Product listings, order management, and admin dashboard providing a seamless online shopping experience."
           />
-        </div>
+        </motion.div>
 
-        {/* Fullscreen Video Portal (Simulated) */}
+        {/* Fullscreen Video Portal */}
         {fullscreenVideo && (
           <div className="fixed inset-0 z-[100] bg-[#603F26]/95 backdrop-blur-xl flex items-center justify-center p-4 md:p-10">
             <button
@@ -195,15 +146,8 @@ export default function Experiences() {
             >
               [x]
             </button>
-            <video
-              autoPlay
-              controls
-              className="max-w-full max-h-full rounded-2xl shadow-2xl"
-            >
-              <source
-                src={fullscreenVideo === "Hotel" ? Hotel : Selfproject}
-                type="video/mp4"
-              />
+            <video autoPlay controls className="max-w-full max-h-full rounded-2xl shadow-2xl">
+              <source src={fullscreenVideo === "Hotel" ? Hotel : Selfproject} type="video/mp4" />
             </video>
           </div>
         )}
@@ -211,28 +155,15 @@ export default function Experiences() {
         <ExperiencesCard />
 
         {/* Personal Bio Section */}
-        <div className="mt-32 text-center max-w-3xl mx-auto space-y-10">
+        <motion.div variants={itemVariants} className="mt-32 text-center max-w-3xl mx-auto space-y-10">
           <ImageCarousel />
           <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-[#603F26]">
-              Personal Journey
-            </h2>
+            <h2 className="text-2xl font-bold text-[#603F26]">Personal Journey</h2>
             <p className="text-lg leading-relaxed text-[#795353] font-light italic">
-              "After gaining experience in customer service, I discovered my
-              passion for technology and transitioned into the IT field by
-              attending coding bootcamps and pursuing a Master’s degree in
-              Engineering Computer Engineering and Financial Technology. I have
-              developed real-world projects as a{" "}
-              <span className="text-[#603F26] font-bold">
-                Full Stack Developer
-              </span>
-              , utilizing tools such as n8n for workflow automation, Diffy
-              chatbot, and relational databases including MSSQL, MySQL
-              Workbench, and PostgreSQL. I am committed to creating efficient,
-              modern, and impactful software solutions."
+              "After gaining experience in customer service, I discovered my passion for technology and transitioned into the IT field by attending coding bootcamps and pursuing a Master’s degree in Engineering Computer Engineering and Financial Technology..."
             </p>
           </div>
-        </div>
+        </motion.div>
       </motion.div>
     </section>
   );

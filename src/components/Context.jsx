@@ -33,14 +33,24 @@ export default function Contact() {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        {/* Header ส่วนหัว */}
+        {/* Header ส่วนหัว - ปรับให้เหมือนหน้า Skills และ Education */}
         <div className="text-center mb-16">
-          <span className="text-sm uppercase tracking-[0.5em] text-[#9E7676] font-medium">
+          {/* Subtitle - เพิ่ม motion และปรับระยะ mb-4 */}
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-sm uppercase tracking-[0.5em] text-[#9E7676] font-medium mb-4"
+          >
             Get in touch
-          </span>
-          <h1 className="text-4xl md:text-5xl font-light text-[#603F26] mt-2">
+          </motion.h2>
+
+          {/* Main Title - ใช้โครงสร้าง font-light และ font-bold */}
+          <h1 className="text-4xl md:text-5xl font-light text-[#603F26]">
             Con<span className="font-bold">tact Me</span>
           </h1>
+
+          {/* Decorative Line */}
           <div className="h-[1px] w-12 bg-[#D1BB9E] mx-auto mt-6"></div>
         </div>
 

@@ -1,30 +1,34 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
 
 const experiences = [
   {
     title: "ERP Odoo System Programmer",
     duration: "1 Year",
-    details: "Developed and customized Odoo ERP system modules, enhancing business processes and operational efficiency.",
-    category: "Development"
+    details:
+      "Developed and customized Odoo ERP system modules, enhancing business processes and operational efficiency.",
+    category: "Development",
   },
   {
     title: "Hospital Customer Service",
     duration: "1 Year",
-    details: "Provided empathetic and efficient support to patients and visitors, ensuring high satisfaction in a fast-paced environment.",
-    category: "Service"
+    details:
+      "Provided empathetic and efficient support to patients and visitors, ensuring high satisfaction in a fast-paced environment.",
+    category: "Service",
   },
   {
     title: "Full-Stack Developer",
     duration: "6 Months",
-    details: "Built responsive web applications from the ground up, working across front-end (React) and back-end (Node.js/Express).",
-    category: "Development"
+    details:
+      "Built responsive web applications from the ground up, working across front-end (React) and back-end (Node.js/Express).",
+    category: "Development",
   },
   {
     title: "Hospital Customer Service",
     duration: "1 Year",
-    details: "Provided empathetic and efficient support to patients and visitors, ensuring high satisfaction in a fast-paced environment.",
-    category: "Service"
+    details:
+      "Provided empathetic and efficient support to patients and visitors, ensuring high satisfaction in a fast-paced environment.",
+    category: "Service",
   },
 ];
 
@@ -71,16 +75,19 @@ export default function ExperiencesCard() {
     <div className="py-24 px-6 max-w-7xl mx-auto">
       {/* Minimal Header */}
       <div className="text-center mb-16">
-        <motion.h2 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          className="text-sm uppercase tracking-[0.5em] text-[#9E7676] font-medium mb-3"
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-sm uppercase tracking-[0.5em] text-[#9E7676] font-medium mb-4"
         >
           Career Path
         </motion.h2>
-        <h1 className="text-3xl md:text-4xl font-light text-[#603F26]">
+
+        <h1 className="text-4xl md:text-5xl font-light text-[#603F26]">
           Professional <span className="font-bold">Journey</span>
         </h1>
+
         <div className="h-[1px] w-12 bg-[#D1BB9E] mx-auto mt-6"></div>
       </div>
 

@@ -51,23 +51,34 @@ export default function Education() {
   };
 
   return (
-    <section className="py-20 overflow-hidden">
+    <section className="pb-20 overflow-hidden">
       <motion.div
         variants={containerVariants}
         initial="hidden"
         whileInView="visible" // เล่น animation เมื่อเลื่อนมาถึง
         viewport={{ once: true, amount: 0.2 }} // เล่นครั้งเดียว และเริ่มเมื่อเห็น 20% ของเนื้อหา
       >
-        {/* Title Section */}
-        <motion.div variants={itemVariants} className="text-center mb-20">
-          <h2 className="text-sm uppercase tracking-[0.5em] text-[#9E7676] font-medium mb-2">
-            Learning Path
-          </h2>
-          <div className="text-4xl md:text-5xl font-light text-[#603F26]">
-            Edu<span className="font-bold">cation</span>
-          </div>
-          <div className="h-[1px] w-12 bg-[#D1BB9E] mx-auto mt-6"></div>
-        </motion.div>
+        {/* Title Section - ปรับ mb-20 เป็น mb-16 และโครงสร้างภายในให้เหมือน Skills */}
+<motion.div variants={itemVariants} className="text-center mb-16">
+  
+  {/* Subtitle - เพิ่ม motion props และ mb-4 ให้เหมือน Expertise */}
+  <motion.h2 
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5 }}
+    className="text-sm uppercase tracking-[0.5em] text-[#9E7676] mb-4 font-medium"
+  >
+    Learning Path
+  </motion.h2>
+
+  {/* Main Title - เปลี่ยนเป็น h1 เพื่อให้ CSS เหมือนกันเป๊ะ */}
+  <h1 className="text-4xl md:text-5xl font-light text-[#603F26]">
+    Formal <span className="font-bold">Education</span>
+  </h1>
+
+  {/* Decorative Line */}
+  <div className="h-[1px] w-12 bg-[#D1BB9E] mx-auto mt-6"></div>
+</motion.div>
 
         {/* Education Grid */}
         <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8">
