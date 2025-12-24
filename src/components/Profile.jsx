@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { AiFillGithub } from "react-icons/ai";
 import { motion } from "framer-motion";
 import a1 from "../assets/A1.png";
-import Education from "./Education";
 
 export default function Profile() {
   const [show, setShow] = useState(false);
@@ -21,7 +20,7 @@ export default function Profile() {
     <section className="max-w-5xl mx-auto px-6 py-20 font-sans text-[#4A3428]">
       {/* ส่วนรูปภาพ - ปรับให้ดูเป็น Art Gallery */}
       <div className="flex flex-col items-center mb-16">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -38,22 +37,24 @@ export default function Profile() {
 
       {/* หัวข้อและชื่อ - ปรับ Typography ให้ Minimal */}
       <div className="text-center space-y-4 mb-10">
-        <motion.h2 
+        <motion.h2
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           className="text-sm uppercase tracking-[0.4em] text-[#9E7676] font-medium"
         >
           Personal
         </motion.h2>
-        
+
         <h1 className="text-4xl md:text-6xl font-light tracking-tight">
           Konkamon <span className="font-bold text-[#603F26]">FUNGSUK</span>
         </h1>
-        
+
         <div className="flex items-center justify-center gap-3 text-xl md:text-2xl text-[#795353]/80 italic font-light">
           <span>( Ploy )</span>
           <span className="w-8 h-[1px] bg-[#D1BB9E]"></span>
-          <span className="not-italic font-medium uppercase tracking-wider text-sm">Full Stack Developer</span>
+          <span className="not-italic font-medium uppercase tracking-wider text-sm">
+            Full Stack Developer
+          </span>
         </div>
       </div>
 
@@ -68,7 +69,9 @@ export default function Profile() {
           className="group flex items-center gap-3 px-6 py-2 rounded-full border border-[#D1BB9E] text-[#603F26] transition-all hover:bg-[#603F26] hover:text-white hover:shadow-lg"
         >
           <AiFillGithub className="text-2xl" />
-          <span className="text-sm font-semibold tracking-wide">VIEW GITHUB</span>
+          <span className="text-sm font-semibold tracking-wide">
+            VIEW GITHUB
+          </span>
         </motion.a>
       </div>
 
@@ -81,15 +84,15 @@ export default function Profile() {
       >
         <div className="relative p-8 border-y border-[#D1BB9E]/30">
           <p className="text-lg leading-relaxed font-light text-[#4A3428]/90">
-            "Full Stack Developer with hands-on experience in designing,
-            developing, and deploying web applications. Skilled in both frontend
-            and backend technologies, with strong expertise in API development,
-            database design, and system deployment."
+            "Full Stack Developer experienced in building end-to-end web
+            applications, from user interface design to backend architecture and
+            deployment. Skilled in API development, database language Knowledge, and system
+            integration, with a strong passion for continuous learning and
+            adopting modern technologies to enhance system performance."
           </p>
         </div>
       </motion.div>
 
-      <Education />
     </section>
   );
 }

@@ -92,22 +92,27 @@ export default function Experiences() {
           >
             Visit Website
           </a>
-          <div className="flex gap-2">
+          <div className="flex gap-3">
+            {/* Front-end Button */}
             <a
               href={githubClient}
               target="_blank"
               rel="noreferrer"
-              className="p-2 border border-[#D1BB9E] text-[#603F26] rounded-full hover:bg-[#D1BB9E]/20 transition-all shadow-sm"
+              className="flex items-center gap-2 px-4 py-2 border border-[#D1BB9E] text-[#603F26] rounded-full hover:bg-[#D1BB9E]/20 transition-all shadow-sm"
             >
               <AiFillGithub size={20} />
+              <span className="text-sm font-medium">Front-end</span>
             </a>
+
+            {/* Back-end Button */}
             <a
               href={githubServer}
               target="_blank"
               rel="noreferrer"
-              className="p-2 border border-[#D1BB9E] text-[#603F26] rounded-full hover:bg-[#D1BB9E]/20 transition-all shadow-sm"
+              className="flex items-center gap-2 px-4 py-2 border border-[#D1BB9E] text-[#603F26] rounded-full hover:bg-[#D1BB9E]/20 transition-all shadow-sm"
             >
               <AiFillGithub size={20} />
+              <span className="text-sm font-medium">Back-end</span>
             </a>
           </div>
         </div>

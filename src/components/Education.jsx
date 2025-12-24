@@ -1,22 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import University from "../assets/University.png";
 import utcc from "../assets/utcc.png";
 import code from "../assets/code.png";
 import { motion } from "framer-motion";
 
 export default function Education() {
-  const [show, setShow] = useState(false);
-
-  const handleScroll = () => {
-    const scrollY = window.scrollY;
-    setShow(scrollY > 400);
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   const educationData = [
     {
       img: utcc,
@@ -41,15 +29,37 @@ export default function Education() {
     },
   ];
 
+  // 1. กำหนด Variant สำหรับ Container (ตัวแม่)
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2, // ให้ลูกๆ ค่อยๆ โผล่ตามกันมาทีละ 0.2 วินาที
+      },
+    },
+  };
+
+  // 2. กำหนด Variant สำหรับลูกๆ แต่ละอัน
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: 0.8, ease: "easeOut" } 
+    },
+  };
+
   return (
-    <section className="py-20">
+    <section className="py-20 overflow-hidden">
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: show ? 1 : 0, y: show ? 0 : 30 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible" // เล่น animation เมื่อเลื่อนมาถึง
+        viewport={{ once: true, amount: 0.2 }} // เล่นครั้งเดียว และเริ่มเมื่อเห็น 20% ของเนื้อหา
       >
-        {/* Title: Minimal Style */}
-        <div className="text-center mb-20">
+        {/* Title Section */}
+        <motion.div variants={itemVariants} className="text-center mb-20">
           <h2 className="text-sm uppercase tracking-[0.5em] text-[#9E7676] font-medium mb-2">
             Learning Path
           </h2>
@@ -57,27 +67,23 @@ export default function Education() {
             Edu<span className="font-bold">cation</span>
           </div>
           <div className="h-[1px] w-12 bg-[#D1BB9E] mx-auto mt-6"></div>
-        </div>
+        </motion.div>
 
         {/* Education Grid */}
         <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8">
           {educationData.map((edu, index) => (
             <motion.div
               key={index}
+              variants={itemVariants} // ใช้ variant เดียวกันแต่จะถูก stagger โดยตัวแม่
               whileHover={{ y: -10 }}
               className="flex flex-col items-center group"
             >
-              {/* Image Container with Soft Glow */}
+              {/* Image Container */}
               <div className="relative mb-8">
-                {/* แสง Glow ด้านหลังเมื่อ Hover */}
                 <div className="absolute inset-0 bg-[#D1BB9E] rounded-full blur-2xl opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
-                
                 <img
                   src={edu.img}
                   alt={edu.place}
-                  /* เปลี่ยนจาก grayscale เป็น opacity-60 (สว่างเห็นสีจางๆ) 
-                    และเมื่อ hover จะเป็น opacity-100 (สีชัดเจน) 
-                  */
                   className="relative w-32 h-32 md:w-40 md:h-40 object-contain grayscale-[0.7] group-hover:grayscale-0 transition-all duration-500"
                 />
               </div>
@@ -87,15 +93,12 @@ export default function Education() {
                 <span className="text-xs font-bold tracking-widest text-[#9E7676] bg-[#D1BB9E]/20 px-3 py-1 rounded-full">
                   {edu.year}
                 </span>
-                
                 <h3 className="text-lg font-bold text-[#603F26] mt-4 leading-tight">
                   {edu.degree}
                 </h3>
-                
                 <p className="text-[#795353] font-medium text-sm md:text-base px-4">
                   {edu.major}
                 </p>
-                
                 <p className="text-[#9E7676] text-xs uppercase tracking-wider mt-2 font-light">
                   {edu.place}
                 </p>

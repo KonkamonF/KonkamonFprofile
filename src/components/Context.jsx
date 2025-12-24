@@ -79,8 +79,9 @@ export default function Contact() {
           className="mt-20 text-center"
         >
           <p className="text-[#795353]/60 font-light text-sm italic">
-            "I'm always open to discussing new projects, creative ideas or
-            opportunities to be part of your visions."
+            "Always open to new projects, innovative ideas, and opportunities to
+            collaborate on impactful digital solutions and opportunities to be
+            part of your visions."
           </p>
           <div className="mt-8 text-[10px] tracking-widest text-[#D1BB9E] uppercase">
             © 2025 Konakmon Fungsuk. All rights reserved.

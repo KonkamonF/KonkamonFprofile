@@ -5,6 +5,7 @@ import Experiences from "../components/Experiences";
 import { HiMenu } from "react-icons/hi";
 import { IoClose } from "react-icons/io5";
 import Contact from "../components/Context";
+import Education from "../components/Education";
 
 export default function Main() {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,14 +29,17 @@ export default function Main() {
         {/* Navigation Container */}
         <nav className="fixed top-4 left-0 right-0 z-50 px-4 md:px-8 flex justify-center">
           <div className="max-w-4xl mx-auto flex flex-col items-center justify-center">
-            
             {/* 1. Mobile Toggle Button (ย้ายมาบนสุดแล้ว) */}
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="md:hidden h-14 w-14 flex items-center justify-center bg-[#D1BB9E] text-[#603F26] shadow-lg rounded-full transition-all duration-300 active:scale-75 mb-3"
             >
               {/* Animation หมุนไอคอนเล็กน้อยตอนสลับ */}
-              <div className={`transition-transform duration-300 ${isOpen ? 'rotate-90' : 'rotate-0'}`}>
+              <div
+                className={`transition-transform duration-300 ${
+                  isOpen ? "rotate-90" : "rotate-0"
+                }`}
+              >
                 {isOpen ? <IoClose size={28} /> : <HiMenu size={28} />}
               </div>
             </button>
@@ -78,13 +82,16 @@ export default function Main() {
         <div className="pt-4 md:pt-20" id="profile-section">
           <Profile />
         </div>
+        <div>
+          <Education />
+        </div>
         <div className="pt-4" id="skills-section">
           <Skills />
         </div>
         <div className="pb-4" id="experiences-section">
           <Experiences />
         </div>
-        <div className="pb-4" id="contact-section"> {/* แก้ ID ไม่ให้ซ้ำกัน */}
+        <div className="pb-4" id="contact-section">
           <Contact />
         </div>
       </div>
