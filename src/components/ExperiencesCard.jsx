@@ -3,32 +3,18 @@ import { motion } from "framer-motion";
 
 const experiences = [
   {
-    title: "ERP Odoo System Programmer",
-    duration: "1 Year",
+    title: "Full-Stack & ERP Developer",
+    duration: "1 Year 6 Months",
     details:
-      "Developed and customized Odoo ERP system modules, enhancing business processes and operational efficiency.",
+      "Expertise in Odoo ERP customization and Full-Stack development. Developed robust web applications using React and Node.js, focusing on automating business processes and optimizing database performance to drive organizational efficiency.",
     category: "Development",
   },
   {
-    title: "Hospital Customer Service",
-    duration: "1 Year",
+    title: "Hospital Admission & Services Lead",
+    duration: "5 Years",
     details:
-      "Provided empathetic and efficient support to patients and visitors, ensuring high satisfaction in a fast-paced environment.",
-    category: "Service",
-  },
-  {
-    title: "Full-Stack Developer",
-    duration: "6 Months",
-    details:
-      "Built responsive web applications from the ground up, working across front-end (React) and back-end (Node.js/Express).",
-    category: "Development",
-  },
-  {
-    title: "Hospital Customer Service",
-    duration: "1 Year",
-    details:
-      "Provided empathetic and efficient support to patients and visitors, ensuring high satisfaction in a fast-paced environment.",
-    category: "Service",
+      "Managed complex hospital admission processes and room allocations. Demonstrated strong coordination skills between medical and administrative departments, ensuring seamless patient transitions and high-level service quality in a high-pressure environment.",
+    category: "Service & Management",
   },
 ];
 
@@ -58,7 +44,7 @@ const ExperienceCard = ({ experience, index }) => {
         </span>
       </div>
 
-      <p className="text-[#795353]/80 leading-relaxed text-sm font-light">
+      <p className="text-[#795353]/50 leading-relaxed text-sm font-light">
         {experience.details}
       </p>
 
