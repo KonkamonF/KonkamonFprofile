@@ -26,7 +26,7 @@ const ExperienceCard = ({ experience, index }) => {
       viewport={{ once: true }}
       transition={{ delay: index * 0.1, duration: 0.6 }}
       whileHover={{ y: -10 }}
-      className="relative flex flex-col p-8 rounded-[2.5rem] bg-white/50 backdrop-blur-md border border-[#D1BB9E]/30 shadow-sm hover:shadow-xl transition-all duration-500 group"
+      className="relative flex items-center flex-col p-8 rounded-[2.5rem] bg-white/50 backdrop-blur-md border border-[#D1BB9E]/30 shadow-sm hover:shadow-xl transition-all duration-500 group"
     >
       {/* Category Tag */}
       <span className="text-[10px] uppercase tracking-[0.3em] text-[#9E7676] font-bold mb-4">
@@ -78,7 +78,7 @@ export default function ExperiencesCard() {
       </div>
 
       {/* Grid Layout */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
         {experiences.map((exp, index) => (
           <ExperienceCard key={index} experience={exp} index={index} />
         ))}
